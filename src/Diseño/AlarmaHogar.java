@@ -9,21 +9,12 @@ import Estados.EstadoAlarma;
 public class AlarmaHogar
 {
 	
+	private EstadoAlarma stateActual;
 	
-	private String codigoDesactivacion;
-	
-	private String codigoIntroducido;
-	
+	private String codigoDesactivacion = "1234";
+	private String codigoIntroducido= "xxxx";
 	public int numIntentos;
-	
-	public boolean intrusoDetectado = false ; 
-	
-	
-	
-	public Piloto pilotoAlarma;
-	
-	private EstadoAlarma state;
-	
+	public Piloto pilotoAlarma = new Piloto();
 	
 	
 	public void notificarCentralita( )
@@ -33,39 +24,44 @@ public class AlarmaHogar
 	
 	public void desactivarSensores( )
 	{
-		
+		System.out.println("Sensores Desactivados");
 	}
 	
 	public void activarSensores( )
 	{
-		
+		System.out.println("Sensores Activados");
 	}
 	
 	public void setEstado( EstadoAlarma state )
 	{
-		this.state = state; 
+		this.stateActual = state; 
 	}
+	
+	//public EstadoAlarma getEstado( )
+	//{
+	//	return this.stateActual; 
+	//}
 	
 	public void alarmaOff( )
 	{
-		
+		stateActual.alarmaOff(this);
 	}
 	
 	public void intruso( )
-	{
-		
+	{		
+		stateActual.intruso(this);
 	}
 	
 	public void off( )
 	{
-		
+		stateActual.off(this);
 	}
 	
 	public void alarmaOn( )
 	{
-		
-	
+		stateActual.alarmaOn(this);
 	}
+	
 
 	public String getCodigoIntroducido() {
 		return codigoIntroducido;

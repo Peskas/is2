@@ -7,15 +7,18 @@ import Diseño.AlarmaHogar;
 
 public class IntrusoDetectado extends EstadoAlarma
 {
+	private Apagada estadoApagado;
+
+	
 	public void entry( AlarmaHogar context )
 	{
-		context.numIntentos=0;
-		context.intrusoDetectado=true;
+		System.out.println("ESTADO: intruso detectado.");
+		
 	}
 	
 	public void doAction( Diseño.AlarmaHogar context )
 	{
-		
+		// Avisar a centralita del intruso
 	}
 	
 	public void exit( AlarmaHogar context )
@@ -25,8 +28,13 @@ public class IntrusoDetectado extends EstadoAlarma
 	
 	public void off( AlarmaHogar context )
 	{
-		
+		System.out.println("pasando a estado: Apagado (OFF)");
+		estadoApagado = new Apagada();
+		this.exit(context)  ;
+		context.setEstado(estadoApagado)   ;  
+		estadoApagado.entry(context)     ;
+		estadoApagado.doAction(context);
 	}
-	
+
 	
 }

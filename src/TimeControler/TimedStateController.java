@@ -13,7 +13,7 @@ public class TimedStateController {
 	private ExpiraTimerTask expiraTimerTask;     
 	private TimedState estado; 
 	private AlarmaHogar context;     
-	private TimedStateController() {  
+	public TimedStateController() {  
 		timer =  new   Timer();   
 
 	}
