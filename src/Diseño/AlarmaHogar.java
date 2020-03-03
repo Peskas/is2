@@ -8,15 +8,19 @@ import Estados.EstadoAlarma;
 
 public class AlarmaHogar
 {
-	private final int intervaloSalida = 30;
 	
-	private final int intervaloDesactivacion = 10 ;
 	
 	private String codigoDesactivacion;
 	
-	private Piloto piloto;
+	private String codigoIntroducido;
 	
-	private Piloto pilotoAlarma;
+	public int numIntentos;
+	
+	public boolean intrusoDetectado = false ; 
+	
+	
+	
+	public Piloto pilotoAlarma;
 	
 	private EstadoAlarma state;
 	
@@ -60,6 +64,23 @@ public class AlarmaHogar
 	public void alarmaOn( )
 	{
 		
+	
+	}
+
+	public String getCodigoIntroducido() {
+		return codigoIntroducido;
+	}
+
+	public void setCodigoIntroducido(String codigoIntroducido) {
+		this.codigoIntroducido = codigoIntroducido;
+	}
+
+	public String getCodigoDesactivacion() {
+		return codigoDesactivacion;
+	}
+
+	public void setCodigoDesactivacion(String codigoDesactivacion) {
+		this.codigoDesactivacion = codigoDesactivacion;
 	}
 	
 	

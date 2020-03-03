@@ -9,7 +9,8 @@ public class Apagada extends EstadoAlarma
 {
 	public void entry( AlarmaHogar context )
 	{
-		
+		context.pilotoAlarma.apagar();
+		context.intrusoDetectado = false ; 
 	}
 	
 	public void doAction( AlarmaHogar context )

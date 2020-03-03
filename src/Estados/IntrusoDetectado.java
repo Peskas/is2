@@ -9,7 +9,8 @@ public class IntrusoDetectado extends EstadoAlarma
 {
 	public void entry( AlarmaHogar context )
 	{
-		
+		context.numIntentos=0;
+		context.intrusoDetectado=true;
 	}
 	
 	public void doAction( Diseño.AlarmaHogar context )
@@ -22,7 +23,7 @@ public class IntrusoDetectado extends EstadoAlarma
 		
 	}
 	
-	public void off( Diseño.AlarmaHogar context )
+	public void off( AlarmaHogar context )
 	{
 		
 	}
