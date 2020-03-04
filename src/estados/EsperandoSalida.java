@@ -1,15 +1,15 @@
-package Estados;
+package estados;
 /**
  * @(#) EsperandoSalida.java
  */
 
-import java.util.Scanner;
-
-import Diseño.AlarmaHogar;
-import TimeControler.TimedStateController;
 
 
-public class EsperandoSalida extends EstadoAlarma  implements TimeControler.TimedState 
+import diseno.AlarmaHogar;
+import timeController.TimedStateController;
+
+
+public class EsperandoSalida extends EstadoAlarma  implements timeController.TimedState 
 {
 	
 	private final int intervaloSalida = 30 * 1000;
@@ -40,36 +40,27 @@ public class EsperandoSalida extends EstadoAlarma  implements TimeControler.Time
 	}
 	
 	
-	// metodos de señal en este estado
+	// metodos de senal en este estado
 
 	public void alarmaOff( AlarmaHogar context )
 	{
 		estadoApagado = new Apagada();
 
-		
-		
-		System.out.println("pasando a estado: Apagado");
-		@SuppressWarnings("resource")
-		Scanner input = new Scanner(System.in);
-
-
-			System.out.println("Introduzca contraseña: ");
-			String txt = input.next();
-			System.out.print(txt);
-			context.setCodigoIntroducido(txt);
-
-			if(context.getCodigoIntroducido().equals(context.getCodigoDesactivacion()) ){
-				System.out.println("contraseña correcta");
-
-				this.exit(context)  ;
-				context.setEstado(estadoApagado)   ;  
-				estadoApagado.entry(context)     ;
-				estadoApagado.doAction(context);
-
-			}else {
-				System.out.println("Contraseña incorrecta");
-			}
-
+		System.out.println("Pasando a estado: Apagado");
+		System.out.println("Introduzca contrasena: ");
+	
+		if(context.getCodigoIntroducido().equals(context.getCodigoDesactivacion()) ){
+			System.out.println("contrasena correcta");
+			context.setMsg("La contrasena es correcta!");
+			this.exit(context)  ;
+			context.setEstado(estadoApagado)   ;  
+			estadoApagado.entry(context)     ;
+			estadoApagado.doAction(context);
+	
+		}else {
+			System.out.println("Contrasena incorrecta");
+			context.setMsg("La contrasena es incorrecta!");
+		}
 		
 	}
 	

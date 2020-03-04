@@ -1,10 +1,10 @@
-package Estados;
+package estados;
 /**
  * @(#) EstadoAlarma.java
  */
 
-import Diseño.AlarmaHogar;
-import TimeControler.TimedStateController;
+import diseno.AlarmaHogar;
+import timeController.TimedStateController;
 
 
 public abstract class EstadoAlarma
@@ -20,6 +20,8 @@ public abstract class EstadoAlarma
 	public void alarmaOn( AlarmaHogar context ){}
 	public void intruso( AlarmaHogar context ){}
 	public void off( AlarmaHogar context ){}
+	
+	public String getMensaje() {return "";}
 	
 
 

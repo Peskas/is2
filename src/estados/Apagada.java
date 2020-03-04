@@ -1,9 +1,9 @@
-package Estados;
+package estados;
 /**
  * @(#) Apagada.java
  */
 
-import Diseño.AlarmaHogar;
+import diseno.AlarmaHogar;
 
 public class Apagada extends EstadoAlarma
 {
@@ -15,6 +15,7 @@ public class Apagada extends EstadoAlarma
 	{
 		System.out.println("ESTADO: Apagado.");
 		context.pilotoAlarma.apagar();
+		context.desactivarSensores();
 	}
 	
 	public void doAction( AlarmaHogar context )

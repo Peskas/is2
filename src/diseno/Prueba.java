@@ -1,6 +1,6 @@
-package Diseño;
+package diseno;
 
-import Estados.*;
+import estados.*;
 
 
 

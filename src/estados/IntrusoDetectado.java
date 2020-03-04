@@ -1,9 +1,9 @@
-package Estados;
+package estados;
 /**
  * @(#) IntrusoDetectado.java
  */
 
-import Diseño.AlarmaHogar;
+import diseno.AlarmaHogar;
 
 public class IntrusoDetectado extends EstadoAlarma
 {
@@ -16,7 +16,7 @@ public class IntrusoDetectado extends EstadoAlarma
 		
 	}
 	
-	public void doAction( Diseño.AlarmaHogar context )
+	public void doAction( diseno.AlarmaHogar context )
 	{
 		// Avisar a centralita del intruso
 	}

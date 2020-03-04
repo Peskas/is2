@@ -2,19 +2,24 @@
  * @(#) AlarmaHogar.java
  */
 
-package Diseño;
+package diseno;
 
-import Estados.EstadoAlarma;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+
+import estados.EstadoAlarma;
 
 public class AlarmaHogar
 {
 	
 	private EstadoAlarma stateActual;
 	
+	private String msg = " ";  
 	private String codigoDesactivacion = "1234";
 	private String codigoIntroducido= "xxxx";
 	public int numIntentos;
 	public Piloto pilotoAlarma = new Piloto();
+	private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
 	
 	
 	public void notificarCentralita( )
@@ -34,13 +39,15 @@ public class AlarmaHogar
 	
 	public void setEstado( EstadoAlarma state )
 	{
+		EstadoAlarma ant = this.stateActual;
 		this.stateActual = state; 
+		changeSupport.firePropertyChange("estado",ant,stateActual);
 	}
 	
-	//public EstadoAlarma getEstado( )
-	//{
-	//	return this.stateActual; 
-	//}
+	public EstadoAlarma getEstado( )
+	{
+		return this.stateActual; 
+	}
 	
 	public void alarmaOff( )
 	{
@@ -77,6 +84,18 @@ public class AlarmaHogar
 
 	public void setCodigoDesactivacion(String codigoDesactivacion) {
 		this.codigoDesactivacion = codigoDesactivacion;
+	}
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+	
+	public void addPropertyChangeListener (PropertyChangeListener listener) {
+		changeSupport.addPropertyChangeListener(listener);
 	}
 	
 	
