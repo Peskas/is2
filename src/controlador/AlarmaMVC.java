@@ -1,6 +1,6 @@
-package diseno;
+package controlador;
 
-import estados.*;
+import modelo.*;
 import vista.Interfaz;
 import vista.InterfazSenales;
 

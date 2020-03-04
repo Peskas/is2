@@ -1,11 +1,11 @@
-package estados;
+package modelo;
 /**
  * @(#) EsperandoSalida.java
  */
 
 
 
-import diseno.AlarmaHogar;
+import controlador.AlarmaHogar;
 import timeController.TimedStateController;
 
 

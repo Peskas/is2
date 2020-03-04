@@ -1,9 +1,9 @@
-package estados;
+package modelo;
 /**
  * @(#) Activada.java
  */
 
-import diseno.AlarmaHogar;
+import controlador.AlarmaHogar;
 
 public class Activada extends EstadoAlarma
 {

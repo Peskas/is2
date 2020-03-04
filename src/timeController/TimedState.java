@@ -1,6 +1,6 @@
 package timeController;
 
-import diseno.AlarmaHogar;
+import controlador.AlarmaHogar;
 
 
 public interface TimedState {

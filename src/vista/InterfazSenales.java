@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-import diseno.AlarmaHogar;
+import controlador.AlarmaHogar;
 
 public class InterfazSenales extends JFrame{
 	private static final long serialVersionUID = 1L;

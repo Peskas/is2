@@ -1,10 +1,10 @@
-package estados;
+package modelo;
 /**
  * @(#) MovDetectado.java
  */
 
 
-import diseno.AlarmaHogar;
+import controlador.AlarmaHogar;
 import timeController.TimedStateController;
 
 

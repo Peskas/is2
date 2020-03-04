@@ -2,12 +2,12 @@
  * @(#) AlarmaHogar.java
  */
 
-package diseno;
+package controlador;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-import estados.EstadoAlarma;
+import modelo.EstadoAlarma;
 
 public class AlarmaHogar
 {

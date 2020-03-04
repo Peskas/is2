@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
-import diseno.AlarmaHogar;
+import controlador.AlarmaHogar;
 
 import javax.swing.JLabel;
 

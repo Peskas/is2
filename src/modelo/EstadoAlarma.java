@@ -1,9 +1,9 @@
-package estados;
+package modelo;
 /**
  * @(#) EstadoAlarma.java
  */
 
-import diseno.AlarmaHogar;
+import controlador.AlarmaHogar;
 import timeController.TimedStateController;
 
 

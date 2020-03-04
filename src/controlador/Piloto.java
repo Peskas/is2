@@ -2,7 +2,7 @@
  * @(#) Piloto.java
  */
 
-package diseno;
+package controlador;
 
 public class Piloto
 {

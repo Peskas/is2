@@ -7,8 +7,8 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import javax.swing.*;
 
-import diseno.*;
-import estados.*;
+import controlador.*;
+import modelo.*;
 
 public class Interfaz extends JFrame implements PropertyChangeListener{
 	private static final long serialVersionUID = 1L;
