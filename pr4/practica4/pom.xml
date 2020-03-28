@@ -4,4 +4,13 @@
   <artifactId>practica4</artifactId>
   <version>0.0.1</version>
   <name>practica4</name>
+  <!-- https://mvnrepository.com/artifact/junit/junit -->
+  <dependencies>
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.12</version>
+        <scope>test</scope>
+    </dependency>
+  </dependencies>
 </project>
