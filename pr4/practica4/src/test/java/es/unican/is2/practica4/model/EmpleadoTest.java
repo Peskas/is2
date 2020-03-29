@@ -10,7 +10,6 @@ import java.time.*;
 import org.junit.*;
 
 public class EmpleadoTest {
-	
 	@SuppressWarnings("unused")
 	private Empleado e;
 	
