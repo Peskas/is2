@@ -64,6 +64,8 @@ public class Empleado {
 		this.baja = false;
 	}
 	
+	
+	
 	public Empleado(String nombre, Categoria cat ,  LocalDate fecha, Boolean baja ) throws FechaIncorrectaException , NullPointerException{
 		
 		if (nombre == null) {

@@ -7,8 +7,10 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import es.unican.is2.practica4.model.Categoria;
+import es.unican.is2.practica4.model.CategoriaIncorrectaException;
 import es.unican.is2.practica4.model.DatoIncorrectoException;
 import es.unican.is2.practica4.model.Empleado;
+import es.unican.is2.practica4.model.FechaIncorrectaException;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -22,14 +24,14 @@ import javax.swing.DropMode;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
-@SuppressWarnings("serial")
+@SuppressWarnings({ "serial", "unused" })
 public class EmpleadosGUI extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtFechaContratacion;
 	private JTextField txtSueldo;
 	private JRadioButton btnBaja;
-	private JComboBox comboCategoria;
+	private JComboBox<Categoria> comboCategoria;
 
 	/**
 	 * Launch the application.
@@ -83,8 +85,24 @@ public class EmpleadosGUI extends JFrame {
 			    LocalDate fechaUltimaVisita = LocalDate.parse(txtFechaContratacion.getText(), formatter);
 			    boolean baja = btnBaja.isSelected();
 			    Categoria categoria = Categoria.valueOf(comboCategoria.getSelectedItem().toString());
-			    Empleado emp = new Empleado("Pepe", fechaUltimaVisita, categoria);
-			    if (baja)
+			    Empleado emp = null;
+				try {
+					emp = new Empleado("Pepe", fechaUltimaVisita, categoria);
+				} catch (NullPointerException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (DatoIncorrectoException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (CategoriaIncorrectaException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (FechaIncorrectaException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			    if (emp != null &&  baja)
 			    	emp.darBaja();
 			    double sueldo = 0;
 				try {			
@@ -92,6 +110,9 @@ public class EmpleadosGUI extends JFrame {
 					txtSueldo.setText(Double.toString(sueldo));
 				} catch (DatoIncorrectoException e) {
 					txtSueldo.setText(Double.toString(sueldo));
+				} catch (CategoriaIncorrectaException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 				
 			}
@@ -104,8 +125,8 @@ public class EmpleadosGUI extends JFrame {
 		btnBaja.setName("btnVIP");
 		contentPane.add(btnBaja);
 		
-		comboCategoria = new JComboBox();
-		comboCategoria.setModel(new DefaultComboBoxModel(new String[] {"DIRECTIVO", "GESTOR", "OBRERO"}));
+		comboCategoria = new JComboBox<Categoria>();
+		comboCategoria.setModel(new DefaultComboBoxModel<Categoria>());
 		comboCategoria.setBounds(124, 47, 86, 20);
 		contentPane.add(comboCategoria);
 		
