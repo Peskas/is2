@@ -57,7 +57,6 @@ public class EmpleadoTest {
 		
 		try {
 			e = new Empleado("Pepe", Categoria.GESTOR, l2, true) ;
-			System.out.println(e.sueldoBruto());
 			Assert.assertTrue("Valor no esperado", e.sueldoBruto() == 900.0);
 		} catch (DatoIncorrectoException e1) {}
 		catch (CategoriaIncorrectaException e1) {}
