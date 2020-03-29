@@ -10,27 +10,94 @@ public class Empleado {
 	private Categoria categoria;
 
 	
-	public Empleado(String nombre, LocalDate fecha, Categoria cat) throws DatoIncorrectoException, CategoriaIncorrectaException , NullPointerException {
+	public Empleado(String nombre, LocalDate fecha, Categoria cat) throws DatoIncorrectoException, CategoriaIncorrectaException , NullPointerException, FechaIncorrectaException {
+		
+		if (nombre == null) {
+			 throw new NullPointerException() ;
+		}else {
+			this.nombre = nombre;
+		}
+
+		if (fecha == null) {
+			 throw new NullPointerException() ;
+		}else if( fecha.compareTo( LocalDate.now() ) < 0  ){
+			 throw new FechaIncorrectaException() ;
+		}
+		else {
+			this.fechaContratacion = fecha; 
+		}
+		
+		if (cat == null) {
+			 throw new NullPointerException() ;
+		}
+		//else if( cat not in Categoria.Enumm  ){
+		//	 throw new FechaIncorrectaException() ;
+		//}
+		else {
+			this.categoria = cat;
+		}
 		
 		
-		this.nombre = nombre;
-		this.fechaContratacion = fecha; 
-		this.categoria = cat;
 		this.baja = false;
 	}
 	
 	public Empleado(String nombre, Categoria cat){ 
-		this.nombre = nombre;
+		
+		if (nombre == null) {
+			 throw new NullPointerException() ;
+		}else {
+			this.nombre = nombre;
+		}
+		
 		this.fechaContratacion = LocalDate.now();
-		this.categoria = cat;
+		
+		
+		if (cat == null) {
+			 throw new NullPointerException() ;
+		}
+		//else if( cat not in Categoria.Enumm  ){
+		//	 throw new FechaIncorrectaException() ;
+		//}
+		else {
+			this.categoria = cat;
+		}
+		
+		
 		this.baja = false;
 	}
 	
-	public Empleado(String nombre, Categoria cat ,  LocalDate fecha, Boolean baja ){
-		this.nombre = nombre;
-		this.fechaContratacion = fecha;
-		this.categoria = cat;
-		this.baja = baja;
+	public Empleado(String nombre, Categoria cat ,  LocalDate fecha, Boolean baja ) throws FechaIncorrectaException , NullPointerException{
+		
+		if (nombre == null) {
+			 throw new NullPointerException() ;
+		}else {
+			this.nombre = nombre;
+		}
+		
+		if (fecha == null) {
+			 throw new NullPointerException() ;
+		}else if( fecha.compareTo( LocalDate.now() ) < 0  ){
+			 throw new FechaIncorrectaException() ;
+		}
+		else {
+			this.fechaContratacion = fecha; 
+		}
+		
+		if (cat == null) {
+			 throw new NullPointerException() ;
+		}
+		//else if( cat not in Categoria.Enumm  ){
+		//	 throw new FechaIncorrectaException() ;
+		//}
+		else {
+			this.categoria = cat;
+		}
+		
+		if (baja == null) {
+			 throw new NullPointerException() ;
+		}else {
+			this.baja = baja;
+		}
 	}
 	
 	
