@@ -112,10 +112,10 @@ public class Empleado {
 			sueldoBase = 1500.0 ;
 			break ;
 		case GESTOR:
-			sueldoBase = 1500.0 ;
+			sueldoBase = 1200.0 ;
 			break;
 		case OBRERO:
-			sueldoBase = 1500.0 ;
+			sueldoBase = 100.0 ;
 			break;
 		default:
 			throw new CategoriaIncorrectaException();
@@ -124,11 +124,11 @@ public class Empleado {
 		// Complemento antiguedad
 		double complAntiguedad = 0;
 		LocalDate fechaActual = LocalDate.now();
-		Period period = Period.between(this.fechaContratacion , fechaActual); 
+		Period period = Period.between(this.fechaContratacion , fechaActual);
 		
 		if( period.getYears() <= 5 ){
 			
-			complAntiguedad = 0.0 ; 
+			complAntiguedad = 0.0 ;
 			
 		}else if( period.getYears() <= 10 ){
 			
@@ -148,7 +148,7 @@ public class Empleado {
 		double reduccionBaja = 25.0 ;
 		
 		if( this.baja ){
-			sueldoBruto = sueldoBruto *  (1 - reduccionBaja) ;
+			sueldoBruto = sueldoBruto *  (1 - reduccionBaja/100) ;
 		}
 			
 		return sueldoBruto;
