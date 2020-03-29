@@ -50,21 +50,22 @@ public class EmpleadoTest {
 		// Clases validas
 		try {
 			e = new Empleado("Pepe", Categoria.DIRECTIVO, l, false) ;
-			Assert.assertTrue("MAL", e.sueldoBruto() == 1500.0);
+			Assert.assertTrue("Valor no esperado", e.sueldoBruto() == 1500.0);
 		} catch (DatoIncorrectoException e1) {}
 		catch (CategoriaIncorrectaException e1) {}
 		catch (FechaIncorrectaException e1) {}
 		
 		try {
 			e = new Empleado("Pepe", Categoria.GESTOR, l2, true) ;
-			Assert.assertTrue("MAL", e.sueldoBruto() == 1500.0);
+			System.out.println(e.sueldoBruto());
+			Assert.assertTrue("Valor no esperado", e.sueldoBruto() == 900.0);
 		} catch (DatoIncorrectoException e1) {}
 		catch (CategoriaIncorrectaException e1) {}
 		catch (FechaIncorrectaException e1) {}
 		
 		try {
 			e = new Empleado("Pepe", Categoria.OBRERO, l3, false) ;
-			Assert.assertTrue("Valor no esperado", e.sueldoBruto() == 100);
+			Assert.assertTrue("Valor no esperado", e.sueldoBruto() == 100.0);
 			
 		} catch (DatoIncorrectoException e1) {}
 		catch (CategoriaIncorrectaException e1) {}
@@ -72,21 +73,21 @@ public class EmpleadoTest {
 		
 		try {
 			e = new Empleado("Pepe", Categoria.OBRERO, l4, false) ;
-			Assert.assertTrue("Valor no esperado", e.sueldoBruto(), == 150);
+			Assert.assertTrue("Valor no esperado", e.sueldoBruto() == 150.0);
 		} catch (DatoIncorrectoException e1) {}
 		catch (CategoriaIncorrectaException e1) {}
 		catch (FechaIncorrectaException e1) {}
 		
 		try {
 			e = new Empleado("Pepe", Categoria.GESTOR, l5, false) ;
-			Assert.assertTrue("Valor no esperado", e.sueldoBruto() == 1250);
+			Assert.assertTrue("Valor no esperado", e.sueldoBruto() == 1250.0);
 		} catch (DatoIncorrectoException e1) {}
 		catch (CategoriaIncorrectaException e1) {}
 		catch (FechaIncorrectaException e1) {}
 		
 		try {
 			e = new Empleado("Pepe", Categoria.DIRECTIVO, l6, false) ;
-			Assert.assertTrue("Valor no esperado", e.sueldoBruto(), == 1550);
+			Assert.assertTrue("Valor no esperado", e.sueldoBruto() == 1550.0);
 		} catch (DatoIncorrectoException e1) {}
 		catch (CategoriaIncorrectaException e1) {}
 		catch (FechaIncorrectaException e1) {}
@@ -134,7 +135,7 @@ public class EmpleadoTest {
 		try {
 			e = new Empleado("Pepe", null, l, false) ;
 			e.sueldoBruto();
-			Assert.assertTrue("No ha salido NullPointer", true);
+			Assert.fail("No ha salido NullPointerException");
 		} catch (NullPointerException e1) {}
 		catch (DatoIncorrectoException e1) {}
 		catch (CategoriaIncorrectaException e1) {}
@@ -151,7 +152,7 @@ public class EmpleadoTest {
 		try {
 			e = new Empleado("Pepe", Categoria.GESTOR, null, false) ;
 			e.sueldoBruto();
-			Assert.fail( "My method didn't throw when I expected it to" );
+			Assert.fail( "No ha salido FechaIncorrectaException" );
 		} catch (NullPointerException e1) {}
 		catch (DatoIncorrectoException e1) {}
 		catch (CategoriaIncorrectaException e1) {}
@@ -160,7 +161,7 @@ public class EmpleadoTest {
 		try {
 			e = new Empleado("Pepe", Categoria.OBRERO, l12, false) ;
 			e.sueldoBruto();
-			Assert.fail( "My method didn't throw when I expected it to" );
+			Assert.fail( "No ha salido FechaIncorrectaException" );
 		} catch (NullPointerException e1) {}
 		catch (DatoIncorrectoException e1) {}
 		catch (CategoriaIncorrectaException e1) {}
