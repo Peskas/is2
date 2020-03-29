@@ -104,6 +104,7 @@ public class Empleado {
 	
 	public double sueldoBruto() throws DatoIncorrectoException, CategoriaIncorrectaException {
 		
+		// Sueldo base
 		double sueldoBase = 0.0;
 		
 		switch( this.categoria ) {
@@ -120,6 +121,7 @@ public class Empleado {
 			throw new CategoriaIncorrectaException();
 		}
 		
+		// Complemento antiguedad
 		double complAntiguedad = 0;
 		LocalDate fechaActual = LocalDate.now();
 		Period period = Period.between(this.fechaContratacion , fechaActual); 
@@ -128,11 +130,11 @@ public class Empleado {
 			
 			complAntiguedad = 0.0 ; 
 			
-		}else if( period.getYears() > 5 ){
+		}else if( period.getYears() <= 10 ){
 			
 			complAntiguedad = 50.0 ;
 			
-		}else if(period.getYears() > 10 ){
+		}else if(period.getYears() <=20 ){
 			
 			complAntiguedad = 100.0 ;
 			
@@ -151,6 +153,7 @@ public class Empleado {
 			
 		return sueldoBruto;
 	}
+	
 	
 	public String getNombre() {
 		return nombre;
