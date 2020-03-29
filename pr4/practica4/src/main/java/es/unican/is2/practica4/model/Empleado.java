@@ -10,20 +10,78 @@ public class Empleado {
 	private Categoria categoria;
 
 	
-	public Empleado(String nombre, LocalDate fecha, Categoria cat){
+	public Empleado(String nombre, LocalDate fecha, Categoria cat) throws DatoIncorrectoException, CategoriaIncorrectaException , NullPointerException {
+		
+		
 		this.nombre = nombre;
-		this.fechaContratacion = fecha; //LocalDate.now();
+		this.fechaContratacion = fecha; 
 		this.categoria = cat;
 		this.baja = false;
 	}
 	
-	public double sueldoBruto() throws DatoIncorrectoException {
-		double sueldoBruto = 0;
-		if(sueldoBruto > 0) {
-			
-		} else {
-			throw new DatoIncorrectoException(Double.toString(sueldoBruto));
+	public Empleado(String nombre, Categoria cat){ 
+		this.nombre = nombre;
+		this.fechaContratacion = LocalDate.now();
+		this.categoria = cat;
+		this.baja = false;
+	}
+	
+	public Empleado(String nombre, Categoria cat ,  LocalDate fecha, Boolean baja ){
+		this.nombre = nombre;
+		this.fechaContratacion = fecha;
+		this.categoria = cat;
+		this.baja = baja;
+	}
+	
+	
+	
+	public double sueldoBruto() throws DatoIncorrectoException, CategoriaIncorrectaException {
+		
+		double sueldoBase = 0.0;
+		
+		switch( this.categoria ) {
+		case DIRECTIVO :
+			sueldoBase = 1500.0 ;
+			break ;
+		case GESTOR:
+			sueldoBase = 1500.0 ;
+			break;
+		case OBRERO:
+			sueldoBase = 1500.0 ;
+			break;
+		default:
+			throw new CategoriaIncorrectaException();
 		}
+		
+		double complAntiguedad = 0;
+		LocalDate fechaActual = LocalDate.now();
+		Period period = Period.between(this.fechaContratacion , fechaActual); 
+		
+		if( period.getYears() <= 5 ){
+			
+			complAntiguedad = 0.0 ; 
+			
+		}else if( period.getYears() > 5 ){
+			
+			complAntiguedad = 50.0 ;
+			
+		}else if(period.getYears() > 10 ){
+			
+			complAntiguedad = 100.0 ;
+			
+		}else if(period.getYears() > 20 ){
+			
+			complAntiguedad = 200.0 ;
+			
+		} // else default ¿?
+			
+		double sueldoBruto = sueldoBase + complAntiguedad ;	
+		double reduccionBaja = 25.0 ;
+		
+		if( this.baja ){
+			sueldoBruto = sueldoBruto *  (1 - reduccionBaja) ;
+		}
+			
 		return sueldoBruto;
 	}
 	
