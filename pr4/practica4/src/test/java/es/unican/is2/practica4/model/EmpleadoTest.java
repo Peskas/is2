@@ -1,4 +1,4 @@
-package practica4;
+package es.unican.is2.practica4.model;
 
 import es.unican.is2.practica4.model.Categoria;
 import es.unican.is2.practica4.model.Empleado;
@@ -10,6 +10,7 @@ import java.time.*;
 import org.junit.*;
 
 public class EmpleadoTest {
+	@SuppressWarnings("unused")
 	private Empleado e;
 	
 	@Before
