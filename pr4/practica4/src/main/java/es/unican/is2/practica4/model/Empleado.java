@@ -11,16 +11,16 @@ public class Empleado {
 
 	
 	public Empleado(String nombre, LocalDate fecha, Categoria cat) throws DatoIncorrectoException, CategoriaIncorrectaException , NullPointerException, FechaIncorrectaException {
-		
+		System.out.println(fecha.compareTo( LocalDate.now() ));
 		if (nombre == null) {
 			 throw new NullPointerException() ;
 		}else {
 			this.nombre = nombre;
 		}
-
+		
 		if (fecha == null) {
 			 throw new NullPointerException() ;
-		}else if( fecha.compareTo( LocalDate.now() ) < 0  ){
+		}else if( fecha.compareTo( LocalDate.now() ) > 0 ){
 			 throw new FechaIncorrectaException() ;
 		}
 		else {
@@ -76,7 +76,7 @@ public class Empleado {
 		
 		if (fecha == null) {
 			 throw new NullPointerException() ;
-		}else if( fecha.compareTo( LocalDate.now() ) < 0  ){
+		}else if( fecha.compareTo( LocalDate.now() ) > 0  ){
 			 throw new FechaIncorrectaException() ;
 		}
 		else {

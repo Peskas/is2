@@ -45,98 +45,98 @@ public class EmpleadoTest {
 	}
 	
 	@Test
-	public void testSueldoBrutoValido() {
+	public void testEmpleadoValido() {
 		
 		// Clases validas
-		e = new Empleado("Pepe", Categoria.DIRECTIVO, l, false) ;
 		try {
+			e = new Empleado("Pepe", Categoria.DIRECTIVO, l, false) ;
 			Assert.assertNotEquals("Valor no esperado", e.sueldoBruto(), 1500);
 		} catch (DatoIncorrectoException e1) {}
 		catch (CategoriaIncorrectaException e1) {}
-		catch (FechaIncorrectaIncorrectaException e1) {}
+		catch (FechaIncorrectaException e1) {}
 		
-		e = new Empleado("Pepe", Categoria.GESTOR, l2, true) ;
 		try {
+			e = new Empleado("Pepe", Categoria.GESTOR, l2, true) ;
 			Assert.assertNotEquals("Valor no esperado", e.sueldoBruto(), 900);
 		} catch (DatoIncorrectoException e1) {}
 		catch (CategoriaIncorrectaException e1) {}
-		catch (FechaIncorrectaIncorrectaException e1) {}
+		catch (FechaIncorrectaException e1) {}
 		
-		e = new Empleado("Pepe", Categoria.OBRERO, l3, false) ;
 		try {
+			e = new Empleado("Pepe", Categoria.OBRERO, l3, false) ;
 			Assert.assertNotEquals("Valor no esperado", e.sueldoBruto(), 100);
 		} catch (DatoIncorrectoException e1) {}
 		catch (CategoriaIncorrectaException e1) {}
-		catch (FechaIncorrectaIncorrectaException e1) {}
+		catch (FechaIncorrectaException e1) {}
 		
-		e = new Empleado("Pepe", Categoria.OBRERO, l4, false) ;
 		try {
+			e = new Empleado("Pepe", Categoria.OBRERO, l4, false) ;
 			Assert.assertNotEquals("Valor no esperado", e.sueldoBruto(), 150);
 		} catch (DatoIncorrectoException e1) {}
 		catch (CategoriaIncorrectaException e1) {}
-		catch (FechaIncorrectaIncorrectaException e1) {}
+		catch (FechaIncorrectaException e1) {}
 		
-		e = new Empleado("Pepe", Categoria.GESTOR, l5, false) ;
 		try {
+			e = new Empleado("Pepe", Categoria.GESTOR, l5, false) ;
 			Assert.assertNotEquals("Valor no esperado", e.sueldoBruto(), 1250);
 		} catch (DatoIncorrectoException e1) {}
 		catch (CategoriaIncorrectaException e1) {}
-		catch (FechaIncorrectaIncorrectaException e1) {}
+		catch (FechaIncorrectaException e1) {}
 		
-		e = new Empleado("Pepe", Categoria.DIRECTIVO, l6, false) ;
 		try {
+			e = new Empleado("Pepe", Categoria.DIRECTIVO, l6, false) ;
 			Assert.assertNotEquals("Valor no esperado", e.sueldoBruto(), 1550);
 		} catch (DatoIncorrectoException e1) {}
 		catch (CategoriaIncorrectaException e1) {}
-		catch (FechaIncorrectaIncorrectaException e1) {}
+		catch (FechaIncorrectaException e1) {}
 		
-		e = new Empleado("Pepe", Categoria.OBRERO, l7, false) ;
 		try {
+			e = new Empleado("Pepe", Categoria.OBRERO, l7, false) ;
 			Assert.assertNotEquals("Valor no esperado", e.sueldoBruto(), 200);
 		} catch (DatoIncorrectoException e1) {}
 		catch (CategoriaIncorrectaException e1) {}
-		catch (FechaIncorrectaIncorrectaException e1) {}
+		catch (FechaIncorrectaException e1) {}
 		
-		e = new Empleado("Pepe", Categoria.GESTOR, l8, false) ;
 		try {
+			e = new Empleado("Pepe", Categoria.GESTOR, l8, false) ;
 			Assert.assertNotEquals("Valor no esperado", e.sueldoBruto(), 1300);
 		} catch (DatoIncorrectoException e1) {}
 		catch (CategoriaIncorrectaException e1) {}
-		catch (FechaIncorrectaIncorrectaException e1) {}
+		catch (FechaIncorrectaException e1) {}
 		
-		e = new Empleado("Pepe", Categoria.DIRECTIVO, l9, false) ;
 		try {
+			e = new Empleado("Pepe", Categoria.DIRECTIVO, l9, false) ;
 			Assert.assertNotEquals("Valor no esperado", e.sueldoBruto(), 1600);
 		} catch (DatoIncorrectoException e1) {}
 		catch (CategoriaIncorrectaException e1) {}
-		catch (FechaIncorrectaIncorrectaException e1) {}
+		catch (FechaIncorrectaException e1) {}
 		
-		e = new Empleado("Pepe", Categoria.OBRERO, l10, false) ;
 		try {
+			e = new Empleado("Pepe", Categoria.OBRERO, l10, false) ;
 			Assert.assertNotEquals("Valor no esperado", e.sueldoBruto(), 300);
 		} catch (DatoIncorrectoException e1) {}
 		catch (CategoriaIncorrectaException e1) {}
-		catch (FechaIncorrectaIncorrectaException e1) {}
+		catch (FechaIncorrectaException e1) {}
 		
-		e = new Empleado("Pepe", Categoria.GESTOR, l11, false) ;
 		try {
+			e = new Empleado("Pepe", Categoria.GESTOR, l11, false) ;
 			Assert.assertNotEquals("Valor no esperado", e.sueldoBruto(), 1400);
 		} catch (DatoIncorrectoException e1) {}
 		catch (CategoriaIncorrectaException e1) {}
-		catch (FechaIncorrectaIncorrectaException e1) {}
+		catch (FechaIncorrectaException e1) {}
 		
 	}
 	
 	@Test
-	public void testSueldoBrutoNoValido() {
+	public void testEmpleadoNoValido() {
 		// Clases no validas
-		e = new Empleado("Pepe", null, l, false) ;
 		try {
+			e = new Empleado("Pepe", null, l, false) ;
 			e.sueldoBruto();
 		} catch (NullPointerException e1) {}
 		catch (DatoIncorrectoException e1) {}
 		catch (CategoriaIncorrectaException e1) {}
-		catch (FechaIncorrectaIncorrectaException e1) {}
+		catch (FechaIncorrectaException e1) {}
 		
 		/*
 		e = new Empleado("Pepe", Categoria.CLIENTE, l, false) ;
@@ -146,23 +146,23 @@ public class EmpleadoTest {
 			
 		}*/
 		
-		e = new Empleado("Pepe", Categoria.GESTOR, null, false) ;
 		try {
+			e = new Empleado("Pepe", Categoria.GESTOR, null, false) ;
 			e.sueldoBruto();
 			Assert.fail( "My method didn't throw when I expected it to" );
 		} catch (NullPointerException e1) {}
 		catch (DatoIncorrectoException e1) {}
 		catch (CategoriaIncorrectaException e1) {}
-		catch (FechaIncorrectaIncorrectaException e1) {}
+		catch (FechaIncorrectaException e1) {}
 		
-		e = new Empleado("Pepe", Categoria.OBRERO, l12, false) ;
 		try {
+			e = new Empleado("Pepe", Categoria.OBRERO, l12, false) ;
 			e.sueldoBruto();
 			Assert.fail( "My method didn't throw when I expected it to" );
 		} catch (NullPointerException e1) {}
 		catch (DatoIncorrectoException e1) {}
 		catch (CategoriaIncorrectaException e1) {}
-		catch (FechaIncorrectaIncorrectaException e1) {}
+		catch (FechaIncorrectaException e1) {}
 	}
 
 }
