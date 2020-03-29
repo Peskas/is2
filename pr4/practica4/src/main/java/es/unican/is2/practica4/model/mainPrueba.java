@@ -8,6 +8,7 @@ public class mainPrueba {
 		LocalDate l = LocalDate.now().plusDays(5);
 		try {
 			Empleado e = new Empleado( "Juan", l, Categoria.GESTOR);
+			System.out.println(e.sueldoBruto());
 		} catch (NullPointerException e) {
 			
 			e.printStackTrace();
