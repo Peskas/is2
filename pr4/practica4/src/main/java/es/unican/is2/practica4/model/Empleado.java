@@ -18,9 +18,7 @@ public class Empleado {
 			this.nombre = nombre;
 		}
 		
-		if (fecha == null){
-			 throw new NullPointerException() ;
-		}else if( fecha.compareTo( LocalDate.now() ) > 0 ){
+		if( fecha.compareTo( LocalDate.now() ) > 0 ){
 			 throw new FechaIncorrectaException() ;
 		}
 		else {
