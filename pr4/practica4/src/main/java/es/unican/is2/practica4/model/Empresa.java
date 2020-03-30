@@ -7,7 +7,7 @@ public class Empresa {
 
 	ArrayList<Empleado> empleadosList ;
 
-	public Empresa() throws NullPointerException, DatoIncorrectoException, CategoriaIncorrectaException, FechaIncorrectaException{
+	public Empresa(){
 		this.empleadosList = new ArrayList<Empleado>();
 	}
 

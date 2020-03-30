@@ -304,43 +304,26 @@ public class EmpleadoTest {
 
 		Empresa emp = null ;
 
+		emp = new Empresa();
+
+
 		try {
-			emp = new Empresa();
-			
+			// Crea un empleado correcto de cada caso. 
+			rellenaPlantilla(emp);
+
 		} catch (NullPointerException e) {
 			Assert.fail("Datos nulos : NullPointerExecption");
 		} catch (DatoIncorrectoException e) {
 			Assert.fail("Error sueldo bruto : DatoIncorrectoException");
 		} catch (CategoriaIncorrectaException e) {
 			Assert.fail("Error categoria no definida : CategoriaIncorrectaException");
+
 		} catch (FechaIncorrectaException e) {
 			Assert.fail("Fecha posterior a hoy : FechaIncorrectaException");
 		}
 
-
-
-		if(emp != null) {
-
-			try {
-				// Crea un empleado correcto de cada caso. 
-				rellenaPlantilla(emp);
-				
-			} catch (NullPointerException e) {
-				Assert.fail("Datos nulos : NullPointerExecption");
-			} catch (DatoIncorrectoException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (CategoriaIncorrectaException e) {
-				Assert.fail("Error categoria no definida : CategoriaIncorrectaException");
-
-			} catch (FechaIncorrectaException e) {
-				Assert.fail("Fecha posterior a hoy : FechaIncorrectaException");
-			}
-
-		}else{
-			Assert.fail( "No ha sido posible crear la empresa" );
-		}
 	}
+
 
 
 
