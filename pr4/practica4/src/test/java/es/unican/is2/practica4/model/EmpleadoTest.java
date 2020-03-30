@@ -22,15 +22,15 @@ public class EmpleadoTest {
 
 	private LocalDate d5post;
 
-	
+
 	// Inicializa las variables del tiempo respecto a hoy
-	
+
 	@Before
 	public void setUp() {
-		
+
 		// Hoy
 		d = LocalDate.now();
-		
+
 		// Date hace n anos
 		d5 = d.minusYears(5);
 		d7 = d.minusYears(7);
@@ -43,9 +43,9 @@ public class EmpleadoTest {
 		d5post = d.plusYears(5);
 	}
 
-	
+
 	// CAJA NEGRA //
-	
+
 	// Constructores no validos
 	@Test
 	public void testCajaNegraConstr() {
@@ -81,16 +81,33 @@ public class EmpleadoTest {
 			Assert.fail("Error categoria no definida : CategoriaIncorrectaException");
 		}
 
+		// Categoria Incorrecta
+		
+		//try {
+		//	emp = new Empleado("Pepe", ?? , d, false) ;
+		//	Assert.fail("No ha salido CategoriaIncorrectaException");
+		//} catch (NullPointerException e1) {
+		//	Assert.fail("Datos nulos : NullPointerExecption");
+		//}
+		//catch (FechaIncorrectaException e1) {
+		//	Assert.fail("Fecha posterior a hoy : FechaIncorrectaException");
+		//} 
+		//catch (CategoriaIncorrectaException emp) {
+		//	// Success
+		//}
+
 
 		// Fecha null
 		try {
 			emp = new Empleado("Pepe", Categoria.GESTOR, null, false) ;
 			Assert.fail( "No ha salido NullPointerException" );
-		} catch (NullPointerException e1) {
+		} 
+		catch (NullPointerException e1) {
 			// Success
-		}
+		} 
 		catch (CategoriaIncorrectaException e1) {
 			Assert.fail("Error categoria no definida : CategoriaIncorrectaException");
+
 		}
 		catch (FechaIncorrectaException e1) {
 			Assert.fail("Fecha posterior a hoy : FechaIncorrectaException");
@@ -110,7 +127,7 @@ public class EmpleadoTest {
 			// Success
 		}
 	}
-	
+
 	// Sueldos brutos corresponden a los de tabla AVL
 	@Test
 	public void testCajaNegraMetodo() {
@@ -175,7 +192,7 @@ public class EmpleadoTest {
 		}catch(NullPointerException e1) {
 			Assert.fail("Datos nulos : NullPointerExecption");
 		}
-		
+
 		try {
 			emp = new Empleado("Pepe", Categoria.DIRECTIVO, d50, true) ;
 			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 1275.0);
@@ -282,7 +299,7 @@ public class EmpleadoTest {
 		}catch(NullPointerException e1) {
 			Assert.fail("Datos nulos : NullPointerExecption");
 		}
-		
+
 		try {
 			emp = new Empleado("Pepe", Categoria.OBRERO, d15, true) ;
 			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 150.0);
@@ -337,7 +354,7 @@ public class EmpleadoTest {
 		}catch(NullPointerException e1) {
 			Assert.fail("Datos nulos : NullPointerExecption");
 		}
-		
+
 		try {
 			emp = new Empleado("Pepe", Categoria.DIRECTIVO, d20, false) ;
 			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 1600);
@@ -352,7 +369,7 @@ public class EmpleadoTest {
 		}catch(NullPointerException e1) {
 			Assert.fail("Datos nulos : NullPointerExecption");
 		}
-		
+
 		try {
 			emp = new Empleado("Pepe", Categoria.DIRECTIVO, d20, false) ;
 			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 1600);
@@ -367,7 +384,7 @@ public class EmpleadoTest {
 		}catch(NullPointerException e1) {
 			Assert.fail("Datos nulos : NullPointerExecption");
 		}
-		
+
 		try {
 			emp = new Empleado("Pepe", Categoria.DIRECTIVO, d20, false) ;
 			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 1600);
@@ -382,7 +399,7 @@ public class EmpleadoTest {
 		}catch(NullPointerException e1) {
 			Assert.fail("Datos nulos : NullPointerExecption");
 		}
-		
+
 		try {
 			emp = new Empleado("Pepe", Categoria.DIRECTIVO, d20, false) ;
 			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 1600);
@@ -397,7 +414,7 @@ public class EmpleadoTest {
 		}catch(NullPointerException e1) {
 			Assert.fail("Datos nulos : NullPointerExecption");
 		}
-		
+
 		try {
 			emp = new Empleado("Pepe", Categoria.DIRECTIVO, d20, false) ;
 			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 1600);
@@ -412,7 +429,7 @@ public class EmpleadoTest {
 		}catch(NullPointerException e1) {
 			Assert.fail("Datos nulos : NullPointerExecption");
 		}
-		
+
 		try {
 			emp = new Empleado("Pepe", Categoria.DIRECTIVO, d20, false) ;
 			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 1600);
@@ -427,7 +444,7 @@ public class EmpleadoTest {
 		}catch(NullPointerException e1) {
 			Assert.fail("Datos nulos : NullPointerExecption");
 		}
-		
+
 		try {
 			emp = new Empleado("Pepe", Categoria.DIRECTIVO, d20, false) ;
 			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 1600);
@@ -442,7 +459,7 @@ public class EmpleadoTest {
 		}catch(NullPointerException e1) {
 			Assert.fail("Datos nulos : NullPointerExecption");
 		}
-		
+
 		try {
 			emp = new Empleado("Pepe", Categoria.DIRECTIVO, d20, false) ;
 			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 1600);
@@ -457,7 +474,7 @@ public class EmpleadoTest {
 		}catch(NullPointerException e1) {
 			Assert.fail("Datos nulos : NullPointerExecption");
 		}
-		
+
 		try {
 			emp = new Empleado("Pepe", Categoria.DIRECTIVO, d20, false) ;
 			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 1600);
@@ -472,7 +489,7 @@ public class EmpleadoTest {
 		}catch(NullPointerException e1) {
 			Assert.fail("Datos nulos : NullPointerExecption");
 		}
-		
+
 		try {
 			emp = new Empleado("Pepe", Categoria.DIRECTIVO, d20, false) ;
 			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 1600);
@@ -487,7 +504,7 @@ public class EmpleadoTest {
 		}catch(NullPointerException e1) {
 			Assert.fail("Datos nulos : NullPointerExecption");
 		}
-		
+
 		try {
 			emp = new Empleado("Pepe", Categoria.DIRECTIVO, d20, false) ;
 			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 1600);
@@ -502,7 +519,7 @@ public class EmpleadoTest {
 		}catch(NullPointerException e1) {
 			Assert.fail("Datos nulos : NullPointerExecption");
 		}
-		
+
 		try {
 			emp = new Empleado("Pepe", Categoria.DIRECTIVO, d20, false) ;
 			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 1600);
@@ -518,7 +535,7 @@ public class EmpleadoTest {
 			Assert.fail("Datos nulos : NullPointerExecption");
 		}
 	}
-	
+
 
 	@Test
 	// Cobertura completa del constructor de empleados correctos.
@@ -620,6 +637,6 @@ public class EmpleadoTest {
 		} catch (FechaIncorrectaException e) {
 			Assert.fail("Fecha posterior a hoy : FechaIncorrectaException");
 		}
-		
+
 	}
 }
