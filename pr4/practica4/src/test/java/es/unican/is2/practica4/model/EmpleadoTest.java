@@ -45,7 +45,7 @@ public class EmpleadoTest {
 	}
 
 	// CAJA NEGRA //
-	
+
 	@Test
 	public void testEmpleadoValido() {
 
@@ -221,12 +221,12 @@ public class EmpleadoTest {
 
 	}
 
-	
-	
+
+
 	@Test
 	public void testEmpleadoNoValido() {
 		// Constructores no validos
-		
+
 
 		// nombre null
 		try {
@@ -242,8 +242,8 @@ public class EmpleadoTest {
 			Assert.fail("Error categoria no definida : CategoriaIncorrectaException");
 
 		}
-		
-		
+
+
 
 		// Categoria null
 		try {
@@ -259,10 +259,10 @@ public class EmpleadoTest {
 			Assert.fail("Error categoria no definida : CategoriaIncorrectaException");
 
 		}
-		
+
 
 		// fecha null
-		
+
 		try {
 			e = new Empleado("Pepe", Categoria.GESTOR, null, false) ;
 			Assert.fail( "No ha salido NullPointerException" );
@@ -273,7 +273,7 @@ public class EmpleadoTest {
 			Assert.fail("Error categoria no definida : CategoriaIncorrectaException");
 		}
 		catch (FechaIncorrectaException e1) {
-			
+			Assert.fail("Fecha posterior a hoy : FechaIncorrectaException");
 		}
 
 		// Fecha posterior a hoy
@@ -292,12 +292,12 @@ public class EmpleadoTest {
 	}
 
 
-	
-	
-	
+
+
+
 	// CAJA BLANCA //
-	
-	
+
+
 	@Test 
 	// Cobertura completa del constructor de empleados correctos.
 	public void testCoberturaCorrecta() {
@@ -306,18 +306,15 @@ public class EmpleadoTest {
 
 		try {
 			emp = new Empresa();
+			
 		} catch (NullPointerException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Assert.fail("Datos nulos : NullPointerExecption");
 		} catch (DatoIncorrectoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Assert.fail("Error sueldo bruto : DatoIncorrectoException");
 		} catch (CategoriaIncorrectaException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Assert.fail("Error categoria no definida : CategoriaIncorrectaException");
 		} catch (FechaIncorrectaException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Assert.fail("Fecha posterior a hoy : FechaIncorrectaException");
 		}
 
 
@@ -325,19 +322,19 @@ public class EmpleadoTest {
 		if(emp != null) {
 
 			try {
-				// Un empleado correcto de cada caso. 
+				// Crea un empleado correcto de cada caso. 
 				rellenaPlantilla(emp);
+				
 			} catch (NullPointerException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Assert.fail("Datos nulos : NullPointerExecption");
 			} catch (DatoIncorrectoException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (CategoriaIncorrectaException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Assert.fail("Error categoria no definida : CategoriaIncorrectaException");
+
 			} catch (FechaIncorrectaException e) {
-				Assert.fail( "No ha sido posible crear la empresa" );
+				Assert.fail("Fecha posterior a hoy : FechaIncorrectaException");
 			}
 
 		}else{
@@ -347,11 +344,11 @@ public class EmpleadoTest {
 
 
 
-	
-	
-	
-	
-	
+
+
+
+
+
 
 	public void rellenaPlantilla(Empresa e) throws NullPointerException, DatoIncorrectoException, CategoriaIncorrectaException, FechaIncorrectaException {
 
