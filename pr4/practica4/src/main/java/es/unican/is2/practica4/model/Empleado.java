@@ -2,7 +2,7 @@ package es.unican.is2.practica4.model;
 
 import java.time.*;
 
-public class Empleado {
+public class Empleado implements Comparable<Empleado>{
 
 	private String nombre;
 	private LocalDate fechaContratacion;
@@ -209,5 +209,10 @@ public class Empleado {
 
 	public LocalDate getFechaContratacion() {
 		return fechaContratacion;
+	}
+
+	public int compareTo(Empleado arg0) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
