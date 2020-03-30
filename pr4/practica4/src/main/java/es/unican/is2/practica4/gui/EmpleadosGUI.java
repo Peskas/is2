@@ -24,13 +24,14 @@ import javax.swing.DropMode;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
-@SuppressWarnings("serial")
+@SuppressWarnings({ "serial", "unused" })
 public class EmpleadosGUI extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtFechaContratacion;
 	private JTextField txtSueldo;
 	private JRadioButton btnBaja;
+	@SuppressWarnings("rawtypes")
 	private JComboBox comboCategoria;
 
 	/**
@@ -52,6 +53,7 @@ public class EmpleadosGUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public EmpleadosGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 408, 213);
@@ -68,6 +70,7 @@ public class EmpleadosGUI extends JFrame {
 		txtFechaContratacion.setColumns(10);
 
 		JLabel lblSueldo = new JLabel("SUELDO");
+		lblSueldo.setName("lblSueldo");
 		lblSueldo.setBounds(10, 140, 126, 17);
 		contentPane.add(lblSueldo);
 
@@ -113,15 +116,17 @@ public class EmpleadosGUI extends JFrame {
 
 		btnBaja = new JRadioButton("Baja");
 		btnBaja.setBounds(249, 26, 109, 23);
-		btnBaja.setName("btnVIP");
+		btnBaja.setName("btnBaja");
 		contentPane.add(btnBaja);
 
 		comboCategoria = new JComboBox();
+		comboCategoria.setName("comboCategoria");
 		comboCategoria.setModel(new DefaultComboBoxModel(new String[] {"DIRECTIVO", "GESTOR", "OBRERO"}));
 		comboCategoria.setBounds(124, 47, 86, 20);
 		contentPane.add(comboCategoria);
 
 		JLabel lblCategoria = new JLabel("Categor\u00EDa");
+		lblCategoria.setName("lblCategoria");
 		lblCategoria.setBounds(10, 50, 114, 14);
 		contentPane.add(lblCategoria);
 
