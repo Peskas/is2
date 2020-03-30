@@ -13,44 +13,42 @@ public class EmpleadoTest {
 
 	private Empleado emp;
 	private LocalDate d;
-	private LocalDate d3;
 	private LocalDate d5;
-	private LocalDate d6;
 	private LocalDate d7;
 	private LocalDate d10;
-	private LocalDate d11;
 	private LocalDate d15;
 	private LocalDate d20;
-	private LocalDate d21;
 	private LocalDate d50;
 
-	private LocalDate l12;
+	private LocalDate d5post;
 
 	
-	// Inicializa las variables del tiempo
+	// Inicializa las variables del tiempo respecto a hoy
+	
 	@Before
 	public void setUp() {
+		
+		// Hoy
 		d = LocalDate.now();
-		d3 = d.minusYears(3);
+		
+		// Date hace n anos
 		d5 = d.minusYears(5);
-		d6 = d.minusYears(6);
 		d7 = d.minusYears(7);
 		d10 = d.minusYears(10);
-		d11 = d.minusYears(11);
 		d15 = d.minusYears(15);
 		d20 = d.minusYears(20);
-		d21 = d.minusYears(21);
 		d50 = d.minusYears(50);
 
-		l12 = d.plusYears(5);
+		// Date en n anos posterior
+		d5post = d.plusYears(5);
 	}
 
+	
 	// CAJA NEGRA //
 	
-	
+	// Constructores no validos
 	@Test
 	public void testCajaNegraConstr() {
-		// Constructores no validos
 
 
 		// nombre null
@@ -65,7 +63,6 @@ public class EmpleadoTest {
 		} 
 		catch (CategoriaIncorrectaException emp) {
 			Assert.fail("Error categoria no definida : CategoriaIncorrectaException");
-
 		}
 
 
@@ -82,12 +79,10 @@ public class EmpleadoTest {
 		} 
 		catch (CategoriaIncorrectaException emp) {
 			Assert.fail("Error categoria no definida : CategoriaIncorrectaException");
-
 		}
 
 
-		// fecha null
-
+		// Fecha null
 		try {
 			emp = new Empleado("Pepe", Categoria.GESTOR, null, false) ;
 			Assert.fail( "No ha salido NullPointerException" );
@@ -103,7 +98,7 @@ public class EmpleadoTest {
 
 		// Fecha posterior a hoy
 		try {
-			emp = new Empleado("Pepe", Categoria.OBRERO, l12, false) ;
+			emp = new Empleado("Pepe", Categoria.OBRERO, d5post, false) ;
 			Assert.fail( "No ha salido FechaIncorrectaException" );
 		} catch (NullPointerException e1) {
 			Assert.fail("Datos nulos : NullPointerExecption");
@@ -121,8 +116,8 @@ public class EmpleadoTest {
 	public void testCajaNegraMetodo() {
 
 		try {
-			emp = new Empleado("Pepe", Categoria.DIRECTIVO, d, false) ;
-			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 1500.0);
+			emp = new Empleado("Pepe", Categoria.DIRECTIVO, d, true) ;
+			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 1125.0);
 		} catch (DatoIncorrectoException e1) {
 			Assert.fail("Error sueldo bruto : DatoIncorrectoException");
 		}
@@ -136,8 +131,8 @@ public class EmpleadoTest {
 		}
 
 		try {
-			emp = new Empleado("Pepe", Categoria.GESTOR, d3, true) ;
-			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 900.0);
+			emp = new Empleado("Pepe", Categoria.DIRECTIVO, d10, true) ;
+			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 1162.5);
 		}  catch (DatoIncorrectoException e1) {
 			Assert.fail("Error sueldo bruto : DatoIncorrectoException");
 		}
@@ -151,8 +146,8 @@ public class EmpleadoTest {
 		}
 
 		try {
-			emp = new Empleado("Pepe", Categoria.OBRERO, d5, false) ;
-			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 100.0);
+			emp = new Empleado("Pepe", Categoria.DIRECTIVO, d20, true) ;
+			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 1200.0);
 
 		}  catch (DatoIncorrectoException e1) {
 			Assert.fail("Error sueldo bruto : DatoIncorrectoException");
@@ -167,40 +162,130 @@ public class EmpleadoTest {
 		}
 
 		try {
-			emp = new Empleado("Pepe", Categoria.OBRERO, d6, false) ;
+			emp = new Empleado("Pepe", Categoria.DIRECTIVO, d50, false) ;
+			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 1700.0);
+		} catch (DatoIncorrectoException e1) {
+			Assert.fail("Error sueldo bruto : DatoIncorrectoException");
+		}
+		catch (CategoriaIncorrectaException e1) {
+			Assert.fail("Error categoria no definida : CategoriaIncorrectaException");
+		}
+		catch (FechaIncorrectaException e1) {
+			Assert.fail("Fecha posterior a hoy : FechaIncorrectaException");
+		}catch(NullPointerException e1) {
+			Assert.fail("Datos nulos : NullPointerExecption");
+		}
+		
+		try {
+			emp = new Empleado("Pepe", Categoria.DIRECTIVO, d50, true) ;
+			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 1275.0);
+		} catch (DatoIncorrectoException e1) {
+			Assert.fail("Error sueldo bruto : DatoIncorrectoException");
+		}
+		catch (CategoriaIncorrectaException e1) {
+			Assert.fail("Error categoria no definida : CategoriaIncorrectaException");
+		}
+		catch (FechaIncorrectaException e1) {
+			Assert.fail("Fecha posterior a hoy : FechaIncorrectaException");
+		}catch(NullPointerException e1) {
+			Assert.fail("Datos nulos : NullPointerExecption");
+		}
+
+
+		try {
+			emp = new Empleado("Pepe", Categoria.GESTOR, d, false) ;
+			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 1200.0);
+		} catch (DatoIncorrectoException e1) {
+			Assert.fail("Error sueldo bruto : DatoIncorrectoException");
+		}
+		catch (CategoriaIncorrectaException e1) {
+			Assert.fail("Error categoria no definida : CategoriaIncorrectaException");
+		}
+		catch (FechaIncorrectaException e1) {
+			Assert.fail("Fecha posterior a hoy : FechaIncorrectaException");
+		}catch(NullPointerException e1) {
+			Assert.fail("Datos nulos : NullPointerExecption");
+		}
+
+
+		try {
+			emp = new Empleado("Pepe", Categoria.GESTOR, d7, true) ;
+			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 937.5);
+		}  catch (DatoIncorrectoException e1) {
+			Assert.fail("Error sueldo bruto : DatoIncorrectoException");
+		}
+		catch (CategoriaIncorrectaException e1) {
+			Assert.fail("Error categoria no definida : CategoriaIncorrectaException");
+		}
+		catch (FechaIncorrectaException e1) {
+			Assert.fail("Fecha posterior a hoy : FechaIncorrectaException");
+		}catch(NullPointerException e1) {
+			Assert.fail("Datos nulos : NullPointerExecption");
+		}
+
+		try {
+			emp = new Empleado("Pepe", Categoria.GESTOR, d15, true) ;
+			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 975);
+		}  catch (DatoIncorrectoException e1) {
+			Assert.fail("Error sueldo bruto : DatoIncorrectoException");
+		}
+		catch (CategoriaIncorrectaException e1) {
+			Assert.fail("Error categoria no definida : CategoriaIncorrectaException");
+		}
+		catch (FechaIncorrectaException e1) {
+			Assert.fail("Fecha posterior a hoy : FechaIncorrectaException");
+		}catch(NullPointerException e1) {
+			Assert.fail("Datos nulos : NullPointerExecption");
+		}
+
+		try {
+			emp = new Empleado("Pepe", Categoria.GESTOR, d50, true) ;
+			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 1050.0);
+		} catch (DatoIncorrectoException e1) {
+			Assert.fail("Error sueldo bruto : DatoIncorrectoException");
+		}
+		catch (CategoriaIncorrectaException e1) {
+			Assert.fail("Error categoria no definida : CategoriaIncorrectaException");
+		}
+		catch (FechaIncorrectaException e1) {
+			Assert.fail("Fecha posterior a hoy : FechaIncorrectaException");
+		}catch(NullPointerException e1) {
+			Assert.fail("Datos nulos : NullPointerExecption");
+		}
+
+		try {
+			emp = new Empleado("Pepe", Categoria.OBRERO, d5, true) ;
+			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 75.0);
+		} catch (DatoIncorrectoException e1) {
+			Assert.fail("Error sueldo bruto : DatoIncorrectoException");
+		}
+		catch (CategoriaIncorrectaException e1) {
+			Assert.fail("Error categoria no definida : CategoriaIncorrectaException");
+		}
+		catch (FechaIncorrectaException e1) {
+			Assert.fail("Fecha posterior a hoy : FechaIncorrectaException");
+		}catch(NullPointerException e1) {
+			Assert.fail("Datos nulos : NullPointerExecption");
+		}
+
+		try {
+			emp = new Empleado("Pepe", Categoria.OBRERO, d7, true) ;
+			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 112.5);
+		}  catch (DatoIncorrectoException e1) {
+			Assert.fail("Error sueldo bruto : DatoIncorrectoException");
+		}
+		catch (CategoriaIncorrectaException e1) {
+			Assert.fail("Error categoria no definida : CategoriaIncorrectaException");
+		}
+		catch (FechaIncorrectaException e1) {
+			Assert.fail("Fecha posterior a hoy : FechaIncorrectaException");
+		}catch(NullPointerException e1) {
+			Assert.fail("Datos nulos : NullPointerExecption");
+		}
+		
+		try {
+			emp = new Empleado("Pepe", Categoria.OBRERO, d15, true) ;
 			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 150.0);
-		} catch (DatoIncorrectoException e1) {
-			Assert.fail("Error sueldo bruto : DatoIncorrectoException");
-		}
-		catch (CategoriaIncorrectaException e1) {
-			Assert.fail("Error categoria no definida : CategoriaIncorrectaException");
-		}
-		catch (FechaIncorrectaException e1) {
-			Assert.fail("Fecha posterior a hoy : FechaIncorrectaException");
-		}catch(NullPointerException e1) {
-			Assert.fail("Datos nulos : NullPointerExecption");
-		}
-
-
-		try {
-			emp = new Empleado("Pepe", Categoria.GESTOR, d7, false) ;
-			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 1250.0);
-		} catch (DatoIncorrectoException e1) {
-			Assert.fail("Error sueldo bruto : DatoIncorrectoException");
-		}
-		catch (CategoriaIncorrectaException e1) {
-			Assert.fail("Error categoria no definida : CategoriaIncorrectaException");
-		}
-		catch (FechaIncorrectaException e1) {
-			Assert.fail("Fecha posterior a hoy : FechaIncorrectaException");
-		}catch(NullPointerException e1) {
-			Assert.fail("Datos nulos : NullPointerExecption");
-		}
-
-
-		try {
-			emp = new Empleado("Pepe", Categoria.DIRECTIVO, d10, false) ;
-			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 1550.0);
 		}  catch (DatoIncorrectoException e1) {
 			Assert.fail("Error sueldo bruto : DatoIncorrectoException");
 		}
@@ -214,68 +299,8 @@ public class EmpleadoTest {
 		}
 
 		try {
-			emp = new Empleado("Pepe", Categoria.OBRERO, d11, false) ;
-			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 200);
-		}  catch (DatoIncorrectoException e1) {
-			Assert.fail("Error sueldo bruto : DatoIncorrectoException");
-		}
-		catch (CategoriaIncorrectaException e1) {
-			Assert.fail("Error categoria no definida : CategoriaIncorrectaException");
-		}
-		catch (FechaIncorrectaException e1) {
-			Assert.fail("Fecha posterior a hoy : FechaIncorrectaException");
-		}catch(NullPointerException e1) {
-			Assert.fail("Datos nulos : NullPointerExecption");
-		}
-
-		try {
-			emp = new Empleado("Pepe", Categoria.GESTOR, d15, false) ;
-			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 1300);
-		} catch (DatoIncorrectoException e1) {
-			Assert.fail("Error sueldo bruto : DatoIncorrectoException");
-		}
-		catch (CategoriaIncorrectaException e1) {
-			Assert.fail("Error categoria no definida : CategoriaIncorrectaException");
-		}
-		catch (FechaIncorrectaException e1) {
-			Assert.fail("Fecha posterior a hoy : FechaIncorrectaException");
-		}catch(NullPointerException e1) {
-			Assert.fail("Datos nulos : NullPointerExecption");
-		}
-
-		try {
-			emp = new Empleado("Pepe", Categoria.DIRECTIVO, d20, false) ;
-			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 1600);
-		} catch (DatoIncorrectoException e1) {
-			Assert.fail("Error sueldo bruto : DatoIncorrectoException");
-		}
-		catch (CategoriaIncorrectaException e1) {
-			Assert.fail("Error categoria no definida : CategoriaIncorrectaException");
-		}
-		catch (FechaIncorrectaException e1) {
-			Assert.fail("Fecha posterior a hoy : FechaIncorrectaException");
-		}catch(NullPointerException e1) {
-			Assert.fail("Datos nulos : NullPointerExecption");
-		}
-
-		try {
-			emp = new Empleado("Pepe", Categoria.OBRERO, d21, false) ;
-			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 300);
-		}  catch (DatoIncorrectoException e1) {
-			Assert.fail("Error sueldo bruto : DatoIncorrectoException");
-		}
-		catch (CategoriaIncorrectaException e1) {
-			Assert.fail("Error categoria no definida : CategoriaIncorrectaException");
-		}
-		catch (FechaIncorrectaException e1) {
-			Assert.fail("Fecha posterior a hoy : FechaIncorrectaException");
-		}catch(NullPointerException e1) {
-			Assert.fail("Datos nulos : NullPointerExecption");
-		}
-
-		try {
-			emp = new Empleado("Pepe", Categoria.GESTOR, d50, false) ;
-			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 1400);
+			emp = new Empleado("Pepe", Categoria.OBRERO, d50, true) ;
+			Assert.assertTrue("Valor no esperado", emp.sueldoBruto() == 225.0);
 		}  catch (DatoIncorrectoException e1) {
 			Assert.fail("Error sueldo bruto : DatoIncorrectoException");
 		}
@@ -524,8 +549,6 @@ public class EmpleadoTest {
 			// Gestor , Contrato +5 , no baja
 			emp.empleadosList.add(new Empleado("Juana", d5, Categoria.GESTOR  ) );
 
-			LocalDate d10 = LocalDate.parse("2009-01-01");
-
 			// Obrero , Contrato +10 , no baja
 			emp.empleadosList.add(new Empleado("Manolo", d10, Categoria.OBRERO  ) );
 
@@ -549,13 +572,13 @@ public class EmpleadoTest {
 
 
 			// Obrero , Contrato hoy , baja
-			emp.empleadosList.add(new Empleado("Link" , Categoria.OBRERO , LocalDate.now(),true ) );
+			emp.empleadosList.add(new Empleado("Link" , Categoria.OBRERO , d,true ) );
 
 			// Directivo , Contrato hoy , baja
-			emp.empleadosList.add(new Empleado("Mario" , Categoria.DIRECTIVO , LocalDate.now(),true  ) );
+			emp.empleadosList.add(new Empleado("Mario" , Categoria.DIRECTIVO , d,true  ) );
 
 			// Gestor , Contrato hoy , baja
-			emp.empleadosList.add(new Empleado("Luigi" ,Categoria.GESTOR ,  LocalDate.now(), true ) );
+			emp.empleadosList.add(new Empleado("Luigi" ,Categoria.GESTOR ,  d, true ) );
 
 			// date +5
 
