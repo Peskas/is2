@@ -195,14 +195,12 @@ public class Empleado {
 		return baja;
 	}
 
-	public boolean darDeAlta() {
-		boolean dadoAlta = false;
-		return dadoAlta;
+	public void darAlta() {
+		this.baja = false;
 	}
 
-	public boolean darBaja() {
-		boolean dadoBaja = false;
-		return dadoBaja;
+	public void darBaja() {
+		this.baja = true;
 	}
 
 	public Categoria getCategoria() {
