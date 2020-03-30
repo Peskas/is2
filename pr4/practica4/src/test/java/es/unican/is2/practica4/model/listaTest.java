@@ -3,13 +3,11 @@ package es.unican.is2.practica4.model;
 
 import org.junit.Assert;
 
-import static org.junit.Assert.assertTrue;
 
 import java.time.*;
 import org.junit.*;
 
-import es.unican.is2.listaOrdenadaAcotada.*;
-import es.unican.is2.practica4.*;
+import es.unican.is2.practica4.ListaOrdenadaAcotada.*;
 
 public class listaTest {
 	
