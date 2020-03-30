@@ -10,83 +10,16 @@ public class Empleado implements Comparable<Empleado>{
 	private Categoria categoria;
 
 
-	public Empleado(String nombre, LocalDate fecha, Categoria cat) throws CategoriaIncorrectaException , NullPointerException, FechaIncorrectaException {
-
-		// Nombre
-		if (nombre == null) {
-			throw new NullPointerException() ;
-		}else {
-			this.nombre = nombre;
-		}
-		
-		
-		// Fecha
-		if( fecha.compareTo( LocalDate.now() ) > 0 ){
-			throw new FechaIncorrectaException() ;
-		}
-		else {
-			this.fechaContratacion = fecha; 
-		}
-
-		// Categoria : 
-		if (cat == null) {
-			throw new NullPointerException() ;
-		}
-		boolean catValida = false ;
-		for (Categoria c : Categoria.values()) {
-			if (c == cat ) {
-				catValida =  true;
-			}
-		}
-		if( !catValida ){
-			throw new FechaIncorrectaException() ;
-		}
-		else {
-			this.categoria = cat;
-		}
-
-
-		// Baja
-		this.baja = false;
+	public Empleado(String nombre, LocalDate fecha, Categoria cat) throws NullPointerException, CategoriaIncorrectaException, FechaIncorrectaException {
+		this(nombre, cat, fecha, false);
 	}
 
-	public Empleado(String nombre, Categoria cat) throws  CategoriaIncorrectaException, NullPointerException{ 
-
-		// Nombre
-		if (nombre == null) {
-			throw new NullPointerException() ;
-		}else {
-			this.nombre = nombre;
-		}
-
-		// Fecha
-		this.fechaContratacion = LocalDate.now();
-
-
-		// Categoria : 
-		if (cat == null) {
-			throw new NullPointerException() ;
-		}
-		boolean catValida = false ;
-		for (Categoria c : Categoria.values()) {
-			if (c == cat ) {
-				catValida =  true;
-			}
-		}
-		if( !catValida ){
-			throw new CategoriaIncorrectaException() ;
-		}
-		else {
-			this.categoria = cat;
-		}
-
-		// Baja
-		this.baja = false;
+	public Empleado(String nombre, Categoria cat) throws NullPointerException, CategoriaIncorrectaException, FechaIncorrectaException { 
+		this(nombre, cat, LocalDate.now(), false);
 	}
 
 
-
-	public Empleado(String nombre, Categoria cat ,  LocalDate fecha, Boolean baja ) throws FechaIncorrectaException , NullPointerException, CategoriaIncorrectaException{
+	public Empleado(String nombre, Categoria cat ,  LocalDate fecha, Boolean baja ) throws NullPointerException, FechaIncorrectaException, CategoriaIncorrectaException{
 
 		// Nombre
 		if (nombre == null) {
@@ -106,30 +39,16 @@ public class Empleado implements Comparable<Empleado>{
 			this.fechaContratacion = fecha; 
 		}
 
-		// Categoria : 
+		// Categoria
 		if (cat == null) {
 			throw new NullPointerException() ;
-		}
-		boolean catValida = false ;
-		for (Categoria c : Categoria.values()) {
-			if (c == cat ) {
-				catValida =  true;
-			}
-		}
-		if( !catValida ){
-			throw new CategoriaIncorrectaException() ;
-		}
-		else {
+		} else {
 			this.categoria = cat;
 		}
 
 		
 		// Baja
-		if (baja == null) {
-			throw new NullPointerException() ;
-		}else {
-			this.baja = baja;
-		}
+		this.baja = baja;
 	}
 
 
@@ -174,7 +93,7 @@ public class Empleado implements Comparable<Empleado>{
 
 			complAntiguedad = 200.0 ;
 
-		} // else default ¿?
+		}
 
 		double sueldoBruto = sueldoBase + complAntiguedad ;	
 		double reduccionBaja = 25.0 ;
