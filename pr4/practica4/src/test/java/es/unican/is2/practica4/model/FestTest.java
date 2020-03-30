@@ -27,37 +27,80 @@ public class FestTest {
 	}
 	
 	@Test
-	public void test() {
-		// Comprobacion Aspecto :
+	public void GUItest() {
+		
+		/// Comprobacion Aspecto :
 		
 		demo.button("btnCalcular").requireText("CALCULAR");
 		demo.label("lblSueldo").requireText("SUELDO");
 		demo.label("lblCategoria").requireText("Categor\u00EDa");
 		demo.radioButton("btnBaja").requireText("Baja");
 	
-		// Valores Por defecto :
+		/// Valores Por defecto :
 		
 		demo.textBox("txtFechaContratacion").requireText("dd/mm/yyyy");
 		demo.radioButton("btnBaja").requireNotSelected()  ;
 		demo.textBox("txtSueldo").requireEmpty();
-		//demo.textBox("txtSueldo").requireNotEditable() ;
 		demo.comboBox("comboCategoria").requireSelection("DIRECTIVO");
 		
 		
+	
+		/// Valor Sueldo Correcto
+	
+		// Salario base por categoria 
+		
+		demo.textBox("txtFechaContratacion").setText("01/01/2020");
+		demo.comboBox("comboCategoria").selectItem("DIRECTIVO");
+		demo.radioButton("btnBaja").uncheck()  ;
+		demo.button("btnCalcular").click();
+		demo.textBox("txtSueldo").requireText("1500.0") ;
+			
+		
+		demo.textBox("txtFechaContratacion").setText("01/01/2020");
+		demo.comboBox("comboCategoria").selectItem("GESTOR");
+		demo.radioButton("btnBaja").uncheck()  ;
+		demo.button("btnCalcular").click();
+		demo.textBox("txtSueldo").requireText("1200.0") ;
 		
 		
-		//  Prueba de saludo con nombre
-		// Escribimos un nombre
-		//demo.textBox("txtNombre").enterText("Patri");
-		// Pulsamos el botón
-		//demo.button("btnPulsar").click();		
-		// Comprobamos la salida
-		//demo.textBox("txtSaludo").requireText("¡Hola Patri!");
+		demo.textBox("txtFechaContratacion").setText("01/01/2020");
+		demo.comboBox("comboCategoria").selectItem("OBRERO");
+		demo.radioButton("btnBaja").uncheck()  ;
+		demo.button("btnCalcular").click();
+		demo.textBox("txtSueldo").requireText("100.0") ;
 		
-		// Prueba de saludo sin nombre
-		//demo.textBox("txtNombre").setText("");
-		//demo.button("btnPulsar").click();
-		//demo.textBox("txtSaludo").requireText("¡Hola!");
+		
+		// Complemento por antiguedad 
+		
+		demo.textBox("txtFechaContratacion").setText("01/01/2014");
+		demo.comboBox("comboCategoria").selectItem("OBRERO");
+		demo.radioButton("btnBaja").uncheck()  ;
+		demo.button("btnCalcular").click();
+		demo.textBox("txtSueldo").requireText("150.0") ;
+		
+		demo.textBox("txtFechaContratacion").setText("01/01/2009");
+		demo.comboBox("comboCategoria").selectItem("OBRERO");
+		demo.radioButton("btnBaja").uncheck()  ;
+		demo.button("btnCalcular").click();
+		demo.textBox("txtSueldo").requireText("200.0") ;
+		
+		demo.textBox("txtFechaContratacion").setText("01/01/1999");
+		demo.comboBox("comboCategoria").selectItem("OBRERO");
+		demo.radioButton("btnBaja").uncheck()  ;
+		demo.button("btnCalcular").click();
+		demo.textBox("txtSueldo").requireText("300.0") ;
+		
+		
+		// Descuento por baja
+		
+		demo.textBox("txtFechaContratacion").setText("01/01/2020");
+		demo.comboBox("comboCategoria").selectItem("OBRERO");
+		demo.radioButton("btnBaja").check()  ;
+		demo.button("btnCalcular").click();
+		demo.textBox("txtSueldo").requireText("75.0") ;
+		
+		
+		
 		
 		// Sleep para visualizar como se realiza el test
 		try {
