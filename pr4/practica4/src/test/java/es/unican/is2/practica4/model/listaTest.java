@@ -27,7 +27,7 @@ public class listaTest {
     	
     } catch (NullPointerException e) {
     } catch (CategoriaIncorrectaException e) {
-    } 
+    } catch (FechaIncorrectaException e) {} 
     
     
     //// test lista correcta 
