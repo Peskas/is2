@@ -8,7 +8,7 @@ public class Empresa {
 	ArrayList<Empleado> empleadosList ;
 
 	public Empresa(){
-		this.empleadosList = new ArrayList<Empleado>();
+		this.empleadosList = new ArrayList<Empleado>(); 
 	}
 
 	
