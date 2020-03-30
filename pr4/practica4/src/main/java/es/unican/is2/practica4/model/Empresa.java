@@ -1,32 +1,26 @@
 package es.unican.is2.practica4.model;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import es.unican.is2.practica4.ListaOrdenadaAcotada.*;
+
 
 public class Empresa {
 
-	ArrayList<Empleado> empleadosList ;
+	ListaOrdenadaAcotada<Empleado> empleadosList ;
 
 	public Empresa(){
-		this.empleadosList = new ArrayList<Empleado>(); 
+		this.empleadosList = new ListaOrdenadaAcotada<Empleado>(); 
 	}
 
-	
-	
-	
-	public ArrayList<Empleado> empleados(){
+	public ListaOrdenadaAcotada<Empleado> empleados(){
 		return this.empleados();
 	}
 
 	public double costeNominas() throws DatoIncorrectoException, CategoriaIncorrectaException{
 
 		double coste = 0; 
+		for (int i = 0 ; i< this.empleados().size() ;i++ ){
 
-		Iterator<Empleado> it = this.empleadosList.iterator();
-
-		while(it.hasNext() ){
-
-			coste += it.next().sueldoBruto() ;
+			coste += this.empleados().get(i).sueldoBruto() ;
 		}
 
 		return coste ;

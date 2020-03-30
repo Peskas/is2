@@ -14,6 +14,7 @@ public class ListaOrdenadaAcotada<E extends Comparable<E>> implements IListaAcot
 	 * 
 	 * @param max
 	 */
+	@SuppressWarnings("unchecked")
 	public ListaOrdenadaAcotada(int max) {
 		lista = (E[]) new Comparable[max];
 		ultimo = -1;

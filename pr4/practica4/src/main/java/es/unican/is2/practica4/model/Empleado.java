@@ -109,7 +109,7 @@ public class Empleado implements Comparable<Empleado>{
 	public String getNombre() {
 		return nombre;
 	}
-
+ 
 	public boolean isBaja() {
 		return baja;
 	}
