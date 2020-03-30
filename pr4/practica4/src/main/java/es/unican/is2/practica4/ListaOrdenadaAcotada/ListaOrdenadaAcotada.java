@@ -31,29 +31,30 @@ public class ListaOrdenadaAcotada<E extends Comparable<E>> implements IListaAcot
 	}
 
 	public void add(E elemento) {
-		
 
-		
-		// compruebo si cabe
-		if (ultimo == lista.length - 1) {
-			throw new IllegalStateException();
-		}
-		// busca el lugar donde debe insertarse
-		int indice = 0;
-		if (ultimo != -1) {
 
-			while (indice <= ultimo && elemento.compareTo(lista[indice]) > 0) {
-				indice++;
+		if(elemento != null) {
+
+			// compruebo si cabe
+			if (ultimo == lista.length - 1) {
+				throw new IllegalStateException();
 			}
-		}
-		// desplaza elementos hacia adelante
-		for (int i = ultimo; i > indice; i--) {
-			lista[i + 1] = lista[i];
-		}
-		// a�ade el elemento
-		lista[indice] = elemento;
-		ultimo++;
+			// busca el lugar donde debe insertarse
+			int indice = 0;
+			if (ultimo != -1) {
 
+				while (indice <= ultimo && elemento.compareTo(lista[indice]) <= 0) {
+					indice++;
+				}
+			}
+			// desplaza elementos hacia adelante
+			for (int i = ultimo; i > indice; i--) {
+				lista[i + 1] = lista[i];
+			}
+			// a�ade el elemento
+			lista[indice] = elemento;
+			ultimo++;
+		}
 	}
 
 	public E remove(int indice) {

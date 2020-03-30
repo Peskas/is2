@@ -15,7 +15,7 @@ public class listaTest {
 	@Test
     public void testCajaNegraInicial() {
 
-    ListaOrdenadaAcotada<Empleado> list = new ListaOrdenadaAcotada<Empleado>();
+    ListaOrdenadaAcotada<Empleado> list = new ListaOrdenadaAcotada<Empleado>(100);
 
     Empleado emp = null;
     Empleado emp1 = null;
@@ -28,9 +28,9 @@ public class listaTest {
     } catch (NullPointerException e) {
     } catch (CategoriaIncorrectaException e) {
     } 
-
     
-    // test lista correcta 
+    
+    //// test lista correcta 
     
     
     list.add(emp);
@@ -46,15 +46,15 @@ public class listaTest {
     	emp2 = list.get(0);
         emp3 = list.get(1);
     }catch (NullPointerException e) {
-    	// Assert.fail("no se puede obtener"); // Error al obtener nombre del segundo elemento
+    	Assert.fail("no se puede obtener"); // Error al obtener nombre del segundo elemento
     }
     
     try {
-    // Assert.assertTrue( "",  emp2.getNombre() == "Pedro" );  
+    	Assert.assertTrue( "",  emp2.getNombre() == "Pedro" );  
     	// Error nombre del primero  -->  GET esta sustitulliendo la primera posicion (indice  0)
-    Assert.assertTrue( "",  emp3.getNombre() == "Juan" );
+    	Assert.assertTrue( "",  emp3.getNombre() == "Juan" );
     }catch (NullPointerException e) {
-    	// Assert.fail("no se puede obtener"); // Error al obtener nombre del segundo elemento en adelante.
+    	Assert.fail("no se puede obtener"); // Error al obtener nombre del segundo elemento en adelante.
     }
     
     try {
@@ -62,7 +62,7 @@ public class listaTest {
     Assert.assertTrue( "",  emp3.getCategoria() == Categoria.OBRERO ); 
 
     }catch (NullPointerException e) {
-    	// Assert.fail("no se puede obtener"); // Error al obtener categoria del segundo elemento en adelante.
+    	Assert.fail("no se puede obtener"); // Error al obtener categoria del segundo elemento en adelante.
     }
     
     
@@ -71,7 +71,7 @@ public class listaTest {
     Assert.assertTrue( "",  emp2.getFechaContratacion().equals(d) );
     Assert.assertTrue( "",  emp3.getFechaContratacion().equals(d) );
     }catch (NullPointerException e) {
-    	// Assert.fail("no se puede obtener");  // Error al obtener categoria del segundo elemento en adelante.
+    	Assert.fail("no se puede obtener");  // Error al obtener categoria del segundo elemento en adelante.
     }
     
     
@@ -83,18 +83,33 @@ public class listaTest {
     try {
     Assert.assertTrue( "",  list.get(0).getNombre() == "Juan" );
     }catch (NullPointerException e) {
-    	// Assert.fail("no se puede obtener");  //  no queda ningun elemento en la lista
+    	Assert.fail("no se puede obtener");  //  no queda ningun elemento en la lista
     }
     
     list.clear();
-    
     Assert.assertTrue( "",  list.size()  == 0 );
 
-    // test lista incorrecta 
+    
+    
+    
+    //// test lista incorrecta 
     
     list.add(null);
-
-    // Assert.assertTrue( "",  list.size()  == 0 ); // Permite añadir nulos
+    Assert.assertTrue( "",  list.size()  == 0 ); // Permite añadir nulos
+    
+    
+    
+    
+    //// test tamaño maximo lista 
+    
+    list.clear();
+    Assert.assertTrue( "",  list.size()  == 0 );
+    
+    for(int i= 0; i<100 ;i++) {
+    	list.add(emp);
+    }
+    Assert.assertTrue( "",  list.size()  == 100 );
+    
 
 
     }

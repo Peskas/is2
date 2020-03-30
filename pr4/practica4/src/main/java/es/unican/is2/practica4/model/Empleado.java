@@ -212,7 +212,8 @@ public class Empleado implements Comparable<Empleado>{
 	}
 
 	public int compareTo(Empleado arg0) {
-		// TODO Auto-generated method stub
+		
+		
 		return 0;
 	}
 }
