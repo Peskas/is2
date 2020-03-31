@@ -11,9 +11,8 @@ import es.unican.is2.practica4.ListaOrdenadaAcotada.*;
 
 public class listaTest {
 
-
 	@Test
-	public void testCajaNegraInicial() {
+	public void testCajaNegraInicialMetodos() {
 
 		ListaOrdenadaAcotada<Empleado> list = new ListaOrdenadaAcotada<Empleado>(100);
 
@@ -32,101 +31,167 @@ public class listaTest {
 		} catch (CategoriaIncorrectaException e) {
 		} catch (FechaIncorrectaException e) {} 
 
-
-		//// test lista correcta 
-
-
+		/////////////////////////
+		// Test lista correcta //
+		/////////////////////////
+		
 		list.add(emp0);
 		list.add(emp1);
 		list.add(emp2);
 
-		Assert.assertTrue( "",  list.size()  == 3 );  // List size correcto ¿?
+		Assert.assertTrue( "Tamano incorrecto",  list.size()  == 3 );  // List size correcto ¿?
 
-		Empleado emp00 = null ;
-		Empleado emp11 = null ;
-		Empleado emp22 = null ;
-
-
-		try {
-			emp00 = list.get(0);
-			emp11 = list.get(1);
-			emp22 = list.get(2);
-
-		}catch (NullPointerException e) {
-			Assert.fail("no se puede obtener"); // Error al obtener nombre del segundo elemento
-		}
-
-		try {
-			Assert.assertTrue( "",  emp00.getNombre() == "Pedro" );  
-			// Error nombre del primero  -->  GET esta sustitulliendo la primera posicion (indice  0)
-			Assert.assertTrue( "",  emp11.getNombre() == "Juan" );
-			Assert.assertTrue( "",  emp22.getNombre() == "Paca" );
-		}catch (NullPointerException e) {
-			Assert.fail("no se puede obtener"); // Error al obtener nombre del segundo elemento en adelante.
-		}
-
-		try {
-			Assert.assertTrue( "",  emp00.getCategoria() == Categoria.OBRERO ); 
-			Assert.assertTrue( "",  emp11.getCategoria() == Categoria.GESTOR ); 
-			Assert.assertTrue( "",  emp22.getCategoria() == Categoria.DIRECTIVO ); 
-
-		}catch (NullPointerException e) {
-			Assert.fail("no se puede obtener"); // Error al obtener categoria del segundo elemento en adelante.
-		}
-
+		Empleado emp0get = null ;
+		Empleado emp1get = null ;
+		Empleado emp2get = null ;
 
 
 		try {
-			Assert.assertTrue( "",  emp00.getFechaContratacion().equals(d) );
-			Assert.assertTrue( "",  emp11.getFechaContratacion().equals(d) );
-			Assert.assertTrue( "",  emp22.getFechaContratacion().equals(d) );
+			emp0get = list.get(0);
+			emp1get = list.get(1);
+			emp2get = list.get(2);
 
 		}catch (NullPointerException e) {
-			Assert.fail("no se puede obtener");  // Error al obtener categoria del segundo elemento en adelante.
+			Assert.fail("No se puede obtener"); // Error al obtener nombre del segundo elemento
+		}
+
+		try {
+			Assert.assertTrue( "Nombre "+emp0get.getNombre()+" incorrecto",  emp0get.getNombre() == "Pedro");  
+			// Error nombre del primero  -->  GET esta sustituyendo la primera posicion (indice 0)
+			Assert.assertTrue( "Nombre incorrecto",  emp1get.getNombre() == "Juan" );
+			Assert.assertTrue( "Nombre incorrecto",  emp2get.getNombre() == "Paca" );
+		}catch (NullPointerException e) {
+			Assert.fail("No se puede obtener"); // Error al obtener nombre del segundo elemento en adelante.
+		}
+
+		try {
+			Assert.assertTrue( "",  emp0get.getCategoria() == Categoria.OBRERO ); 
+			Assert.assertTrue( "",  emp1get.getCategoria() == Categoria.GESTOR ); 
+			Assert.assertTrue( "",  emp2get.getCategoria() == Categoria.DIRECTIVO ); 
+
+		}catch (NullPointerException e) {
+			Assert.fail("No se puede obtener"); // Error al obtener categoria del segundo elemento en adelante.
 		}
 
 
+		try {
+			Assert.assertTrue( "Fecha incorrecta",  emp0get.getFechaContratacion().equals(d) );
+			Assert.assertTrue( "Fecha incorrecta",  emp1get.getFechaContratacion().equals(d) );
+			Assert.assertTrue( "Fecha incorrecta",  emp2get.getFechaContratacion().equals(d) );
+
+		}catch (NullPointerException e) {
+			Assert.fail("No se puede obtener");  // Error al obtener categoria del segundo elemento en adelante.
+		}
 
 		list.remove(0);
-
-		Assert.assertTrue( "",  list.size()  == 2 );
+		Assert.assertTrue( "Tamano incorrecto, el tamano de la lista deberia ser 2",  list.size()  == 2 );
 
 		try {
-			Assert.assertTrue( "",  list.get(0).getNombre() == "Juan" );
-			Assert.assertTrue( "",  list.get(1).getNombre() == "Paca" );
+			Assert.assertTrue( "Nombre incorrecto",  list.get(0).getNombre() == "Juan" );
+			Assert.assertTrue( "Nombre incorrecto",  list.get(1).getNombre() == "Paca" );
 		}catch (NullPointerException e) {
-			Assert.fail("no se puede obtener");  //  no queda ningun elemento en la lista
+			Assert.fail("No se puede obtener");  //  No queda ningun elemento en la lista
 		}
 
 		list.clear();
-		Assert.assertTrue( "",  list.size()  == 0 );
+		Assert.assertTrue( "Tamano incorrecto, el tamano de la lista deberia ser 0",  list.size()  == 0 );
 
 
+		///////////////////////////
+		// Test lista incorrecta //
+		///////////////////////////
 
-
-		//// test lista incorrecta 
-
+		// Permite añadir nulos
 		list.add(null);
-		Assert.assertTrue( "",  list.size()  == 0 ); // Permite añadir nulos
-
-		// crear lista negativo ,  crear lista null
-		// get(negativo) ,get(null)
-		// remove(negativo) ,remove(null)
-
-
-
-
-		//// test tamaño maximo lista 
-
+		Assert.assertTrue( "Tamano incorrecto",  list.size()  == 0 );
+		
+		// Numero por parametro negativo
+		try {
+			list.get(-1);
+			Assert.fail("La lista permite acceder a una posicion negativa");
+		}catch (IndexOutOfBoundsException e) {
+			// Correcto
+		}
+		
+		// Numero por parametro mayor o igual que lista.size()
+		try {
+			list.get(100);
+			Assert.fail("La lista permite acceder a una posicion mayor que el tamano de la lista");
+		}catch (IndexOutOfBoundsException e) {
+			// Correcto
+		}
+		
+		// Numero por parametro negativo
+		try {
+			list.remove(-1);
+			Assert.fail("La lista permite acceder a una posicion negativa");
+		}catch (IndexOutOfBoundsException e) {
+			// Correcto
+		}
+		
+		// Numero por parametro mayor o igual que lista.size()
+		try {
+			list.remove(100);
+			Assert.fail("La lista permite acceder a una posicion mayor que el tamano de la lista");
+		}catch (IndexOutOfBoundsException e) {
+			// Correcto
+		}
+		
+		
+		// Test tamano maximo lista 
 		list.clear();
-		Assert.assertTrue( "",  list.size()  == 0 );
+		Assert.assertTrue( "Tamano incorrecto",  list.size()  == 0 );
 
 		for(int i= 0; i<100 ;i++) {
-			list.add(emp00);
+			list.add(emp0get);
 		}
-		Assert.assertTrue( "",  list.size()  == 100 );
-
-
-
+		Assert.assertTrue( "Tamano incorrecto",  list.size()  == 100 );
+	}
+	
+	@Test
+	public void testCajaNegraInicialConstructor() {
+		// crear lista negativo ,  crear lista 0
+		try {
+		ListaOrdenadaAcotada<Empleado> list = new ListaOrdenadaAcotada<Empleado>(-10);
+		Assert.fail("La lista permite crearse con numeros negativos como tamano");
+		}catch (NegativeArraySizeException e) {
+			// Correcto
+		}
+		try {
+			ListaOrdenadaAcotada<Empleado> list = new ListaOrdenadaAcotada<Empleado>(0);
+			Assert.fail("La lista permite crearse con tamano 0");
+		}catch (NullPointerException e) {
+			// Correcto
+		}
+	}
+	
+	
+	@Test
+	public void testCajaBlanca() {
+		
+		// Crear lista con el constructor sin parametro
+		ListaOrdenadaAcotada<Empleado> list = new ListaOrdenadaAcotada<Empleado>();
+		
+		// Crear lista con el constructor sin parametro
+		ListaOrdenadaAcotada<Empleado> list2 = new ListaOrdenadaAcotada<Empleado>(100);
+		for(int i= 0; i<100 ;i++) {
+			try {
+				list2.add(new Empleado("Pepe",Categoria.OBRERO));
+			} catch (NullPointerException e) {
+			} catch (CategoriaIncorrectaException e) {
+			} catch (FechaIncorrectaException e) {
+			}
+		}
+			// Correcto
+		try {
+			list2.add(new Empleado("Pepe",Categoria.OBRERO));
+		} catch (NullPointerException e) {
+		} catch (CategoriaIncorrectaException e) {
+		} catch (FechaIncorrectaException e) {
+		} catch (IllegalStateException e) {
+			//Correcto
+		}
+		
+				
 	}
 }
