@@ -19,6 +19,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.awt.event.ActionEvent;
 import javax.swing.DropMode;
 import javax.swing.JComboBox;
@@ -84,8 +85,16 @@ public class EmpleadosGUI extends JFrame {
 		btnCalcular.setName("btnCalcular");
 		btnCalcular.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-			    LocalDate fechaUltimaVisita = LocalDate.parse(txtFechaContratacion.getText(), formatter);
+
+				LocalDate fechaUltimaVisita = null;
+				try {
+					fechaUltimaVisita = LocalDate.parse(txtFechaContratacion.getText(), formatter);
+				}catch(DateTimeParseException e){
+					System.out.println("Introduce fecha con formato dd/mm/aaaa");
+				}
+				
 			    boolean baja = btnBaja.isSelected();
 			    Categoria categoria = Categoria.valueOf(comboCategoria.getSelectedItem().toString());
 			    
@@ -96,17 +105,9 @@ public class EmpleadosGUI extends JFrame {
 					sueldo = emp.sueldoBruto();
 					txtSueldo.setText(Double.toString(sueldo));
 				} catch (NullPointerException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
 				} catch (DatoIncorrectoException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
 				} catch (CategoriaIncorrectaException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
 				} catch (FechaIncorrectaException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
 				}
 
 			}

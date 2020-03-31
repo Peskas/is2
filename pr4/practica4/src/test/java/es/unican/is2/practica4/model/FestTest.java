@@ -27,7 +27,7 @@ public class FestTest {
 	}
 	
 	@Test
-	public void GUItest() {
+	public void GUItest() { 
 		
 		/// Comprobacion Aspecto :
 		

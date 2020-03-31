@@ -12,7 +12,29 @@ import es.unican.is2.practica4.ListaOrdenadaAcotada.*;
 public class listaTest {
 
 	@Test
-	public void testCajaNegraInicialMetodos() {
+	public void testCajaNegraConstructor() {
+
+
+
+		// crear lista negativo ,  crear lista 0
+		try {
+			ListaOrdenadaAcotada<Empleado> list = new ListaOrdenadaAcotada<Empleado>(-10);
+			Assert.fail("La lista permite crearse con numeros negativos como tamano");
+		}catch (NegativeArraySizeException e) {
+			// Success
+		}
+
+		// Lista tamaño 0
+		try {
+			ListaOrdenadaAcotada<Empleado> list = new ListaOrdenadaAcotada<Empleado>(0);
+			Assert.fail("La lista permite crearse con tamano 0");
+		}catch (NullPointerException e) {
+			// Success
+		}
+	}
+
+	@Test
+	public void testCajaNegraMetodos() {
 
 		ListaOrdenadaAcotada<Empleado> list = new ListaOrdenadaAcotada<Empleado>(100);
 
@@ -34,7 +56,7 @@ public class listaTest {
 		/////////////////////////
 		// Test lista correcta //
 		/////////////////////////
-		
+
 		list.add(emp0);
 		list.add(emp1);
 		list.add(emp2);
@@ -52,7 +74,7 @@ public class listaTest {
 			emp2get = list.get(2);
 
 		}catch (NullPointerException e) {
-			Assert.fail("No se puede obtener"); // Error al obtener nombre del segundo elemento
+			Assert.fail("No se puede obtener"); // Error al obtener el segundo elemento en adelante
 		}
 
 		try {
@@ -65,9 +87,9 @@ public class listaTest {
 		}
 
 		try {
-			Assert.assertTrue( "",  emp0get.getCategoria() == Categoria.OBRERO ); 
-			Assert.assertTrue( "",  emp1get.getCategoria() == Categoria.GESTOR ); 
-			Assert.assertTrue( "",  emp2get.getCategoria() == Categoria.DIRECTIVO ); 
+			Assert.assertTrue( "Categoria Incorrecta",  emp0get.getCategoria() == Categoria.OBRERO ); 
+			Assert.assertTrue( "Categoria Incorrecta",  emp1get.getCategoria() == Categoria.GESTOR ); 
+			Assert.assertTrue( "Categoria Incorrecta",  emp2get.getCategoria() == Categoria.DIRECTIVO ); 
 
 		}catch (NullPointerException e) {
 			Assert.fail("No se puede obtener"); // Error al obtener categoria del segundo elemento en adelante.
@@ -104,41 +126,42 @@ public class listaTest {
 		// Permite añadir nulos
 		list.add(null);
 		Assert.assertTrue( "Tamano incorrecto",  list.size()  == 0 );
-		
+
 		// Numero por parametro negativo
 		try {
 			list.get(-1);
 			Assert.fail("La lista permite acceder a una posicion negativa");
 		}catch (IndexOutOfBoundsException e) {
-			// Correcto
+			// Success
 		}
-		
+
 		// Numero por parametro mayor o igual que lista.size()
 		try {
 			list.get(100);
 			Assert.fail("La lista permite acceder a una posicion mayor que el tamano de la lista");
 		}catch (IndexOutOfBoundsException e) {
-			// Correcto
+			// Success
 		}
-		
+
 		// Numero por parametro negativo
 		try {
 			list.remove(-1);
-			Assert.fail("La lista permite acceder a una posicion negativa");
+			Assert.fail("La lista permite borrar a una posicion negativa");
 		}catch (IndexOutOfBoundsException e) {
-			// Correcto
+			// Success
 		}
-		
+
 		// Numero por parametro mayor o igual que lista.size()
 		try {
 			list.remove(100);
-			Assert.fail("La lista permite acceder a una posicion mayor que el tamano de la lista");
+			Assert.fail("La lista permite borrar a una posicion mayor que el tamano de la lista");
 		}catch (IndexOutOfBoundsException e) {
-			// Correcto
+			// Success
 		}
-		
-		
-		// Test tamano maximo lista 
+
+
+		// Test anadir ultima posicion
+
 		list.clear();
 		Assert.assertTrue( "Tamano incorrecto",  list.size()  == 0 );
 
@@ -147,51 +170,49 @@ public class listaTest {
 		}
 		Assert.assertTrue( "Tamano incorrecto",  list.size()  == 100 );
 	}
-	
-	@Test
-	public void testCajaNegraInicialConstructor() {
-		// crear lista negativo ,  crear lista 0
-		try {
-		ListaOrdenadaAcotada<Empleado> list = new ListaOrdenadaAcotada<Empleado>(-10);
-		Assert.fail("La lista permite crearse con numeros negativos como tamano");
-		}catch (NegativeArraySizeException e) {
-			// Correcto
-		}
-		try {
-			ListaOrdenadaAcotada<Empleado> list = new ListaOrdenadaAcotada<Empleado>(0);
-			Assert.fail("La lista permite crearse con tamano 0");
-		}catch (NullPointerException e) {
-			// Correcto
-		}
-	}
-	
-	
+
+
+
+
 	@Test
 	public void testCajaBlanca() {
-		
-		// Crear lista con el constructor sin parametro
-		ListaOrdenadaAcotada<Empleado> list = new ListaOrdenadaAcotada<Empleado>();
-		
-		// Crear lista con el constructor sin parametro
-		ListaOrdenadaAcotada<Empleado> list2 = new ListaOrdenadaAcotada<Empleado>(100);
-		for(int i= 0; i<100 ;i++) {
-			try {
-				list2.add(new Empleado("Pepe",Categoria.OBRERO));
-			} catch (NullPointerException e) {
-			} catch (CategoriaIncorrectaException e) {
-			} catch (FechaIncorrectaException e) {
-			}
-		}
-			// Correcto
+
+		Empleado emp = null;
+
 		try {
-			list2.add(new Empleado("Pepe",Categoria.OBRERO));
+			emp = new Empleado("Pepe",Categoria.OBRERO) ;
 		} catch (NullPointerException e) {
 		} catch (CategoriaIncorrectaException e) {
 		} catch (FechaIncorrectaException e) {
-		} catch (IllegalStateException e) {
-			//Correcto
 		}
-		
-				
+ 
+		// Crear lista con el constructor sin parametro
+		ListaOrdenadaAcotada<Empleado> list = new ListaOrdenadaAcotada<Empleado>();
+		System.out.println(list.size());
+		for(int i= 0; i<10 ;i++) {
+			try {
+				list.add(emp);
+			} catch (NullPointerException e) {} 
+		}
+		Assert.assertTrue("",list.size() == 10);
+
+		// Crear lista con 100 elementos
+		ListaOrdenadaAcotada<Empleado> list2 = new ListaOrdenadaAcotada<Empleado>(100);
+		for(int i= 0; i<100 ;i++) {
+			try {
+				list2.add(emp);
+			} catch (NullPointerException e) {}
+		}
+
+
+		// Añadir empleado a lista llena
+		try {
+			list2.add(emp);
+		} catch (NullPointerException e) {
+		} catch (IllegalStateException e) {
+			// Success
+		}
+
+
 	}
 }
