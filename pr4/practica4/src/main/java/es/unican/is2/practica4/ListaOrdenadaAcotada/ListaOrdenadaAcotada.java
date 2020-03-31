@@ -16,8 +16,14 @@ public class ListaOrdenadaAcotada<E extends Comparable<E>> implements IListaAcot
 	 */
 	@SuppressWarnings("unchecked")
 	public ListaOrdenadaAcotada(int max) {
+		
+		if(max == 0) {
+			throw new NullPointerException();
+		}else {
+		
 		lista = (E[]) new Comparable[max];
 		ultimo = -1;
+		}
 	}
 
 	/**
@@ -28,7 +34,14 @@ public class ListaOrdenadaAcotada<E extends Comparable<E>> implements IListaAcot
 	}
 
 	public E get(int indice) {
+		
+		if (indice > ultimo) {
+			throw new IndexOutOfBoundsException();
+		}else if(indice < 0) {
+			throw new IndexOutOfBoundsException();
+		}else {	
 		return lista[indice];
+		}
 	}
 
 	public void add(E elemento) {
@@ -59,9 +72,13 @@ public class ListaOrdenadaAcotada<E extends Comparable<E>> implements IListaAcot
 	}
 
 	public E remove(int indice) {
+		
+		
 		if (indice > ultimo) {
 			throw new IndexOutOfBoundsException();
-		}
+		}else if(indice < 0) {
+			throw new IndexOutOfBoundsException();
+		}else {
 		E borrado = lista[indice];
 		// desplaza elementos hacia atras
 		for (int i = indice + 1; i <= ultimo; i++) {
@@ -70,6 +87,7 @@ public class ListaOrdenadaAcotada<E extends Comparable<E>> implements IListaAcot
 		// actualiza ultimo y retorna el elemento borrado
 		ultimo--;
 		return borrado;
+		}
 	}
 
 	public int size() {
