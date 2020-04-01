@@ -7,8 +7,8 @@ public class Empresa {
 
 	ListaOrdenadaAcotada<Empleado> empleadosList ;
 
-	public Empresa(){
-		this.empleadosList = new ListaOrdenadaAcotada<Empleado>(); 
+	public Empresa(int n){
+		this.empleadosList = new ListaOrdenadaAcotada<Empleado>(n); 
 	}
 
 	public ListaOrdenadaAcotada<Empleado> empleados(){

@@ -10,7 +10,7 @@ public class ListaOrdenadaAcotada<E extends Comparable<E>> implements IListaAcot
 	private int ultimo;
 
 	/**
-	 * Constructor al que se le pasa el tama�o maximo de la lista
+	 * Constructor al que se le pasa el tamano maximo de la lista
 	 * 
 	 * @param max
 	 */
@@ -27,7 +27,7 @@ public class ListaOrdenadaAcotada<E extends Comparable<E>> implements IListaAcot
 	}
 
 	/**
-	 * Constructor que crea la lista con un tama�o igual a maxPorOmision
+	 * Constructor que crea la lista con un tamano igual a maxPorOmision
 	 */
 	public ListaOrdenadaAcotada() {
 		this(MAX_POR_OMISION);
@@ -65,7 +65,7 @@ public class ListaOrdenadaAcotada<E extends Comparable<E>> implements IListaAcot
 			for (int i = ultimo; i > indice; i--) {
 				lista[i + 1] = lista[i];
 			}
-			// a�ade el elemento
+			// anade el elemento
 			lista[indice] = elemento;
 			ultimo++;
 		}

@@ -51,7 +51,7 @@ public class EmpleadoTest {
 	public void testCajaNegraConstr() {
 
 
-		// nombre null
+		// Nombre null
 		try {
 			emp = new Empleado(null, Categoria.GESTOR, d, false) ;
 			Assert.fail("No ha salido NullPointerException");
@@ -543,7 +543,7 @@ public class EmpleadoTest {
 
 		Empresa emp = null ;
 
-		emp = new Empresa();
+		emp = new Empresa(100);
 
 
 		try {

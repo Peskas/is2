@@ -11,11 +11,13 @@ import es.unican.is2.practica4.ListaOrdenadaAcotada.*;
 
 public class listaTest {
 
+	@SuppressWarnings("unused")
+	
 	@Test
 	public void testCajaNegraConstructor() {
 
 
-
+		
 		// crear lista negativo ,  crear lista 0
 		try {
 			ListaOrdenadaAcotada<Empleado> list = new ListaOrdenadaAcotada<Empleado>(-10);
@@ -24,7 +26,7 @@ public class listaTest {
 			// Success
 		}
 
-		// Lista tamaño 0
+		// Lista tamano 0
 		try {
 			ListaOrdenadaAcotada<Empleado> list = new ListaOrdenadaAcotada<Empleado>(0);
 			Assert.fail("La lista permite crearse con tamano 0");
@@ -123,7 +125,7 @@ public class listaTest {
 		// Test lista incorrecta //
 		///////////////////////////
 
-		// Permite añadir nulos
+		// Permite anadir nulos
 		list.add(null);
 		Assert.assertTrue( "Tamano incorrecto",  list.size()  == 0 );
 
@@ -205,7 +207,7 @@ public class listaTest {
 		}
 
 
-		// Añadir empleado a lista llena
+		// Anadir empleado a lista llena
 		try {
 			list2.add(emp);
 		} catch (NullPointerException e) {
