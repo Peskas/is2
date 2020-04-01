@@ -15,7 +15,7 @@ public class Empresa {
 		return this.empleados();
 	}
 
-	public double costeNominas() throws DatoIncorrectoException, CategoriaIncorrectaException{
+	public double costeNominas() throws DatoIncorrectoException{
 
 		double coste = 0; 
 		for (int i = 0 ; i< this.empleados().size() ;i++ ){

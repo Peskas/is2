@@ -10,29 +10,22 @@ public class Empleado implements Comparable<Empleado>{
 	private Categoria categoria;
 
 
-	public Empleado(String nombre, LocalDate fecha, Categoria cat) throws NullPointerException, CategoriaIncorrectaException, FechaIncorrectaException {
+	public Empleado(String nombre, LocalDate fecha, Categoria cat) throws NullPointerException, FechaIncorrectaException {
 		this(nombre, cat, fecha, false);
 	}
 
-	public Empleado(String nombre, Categoria cat) throws NullPointerException, CategoriaIncorrectaException, FechaIncorrectaException { 
+	public Empleado(String nombre, Categoria cat) throws NullPointerException, FechaIncorrectaException { 
 		this(nombre, cat, LocalDate.now(), false);
 	}
 
 
-	public Empleado(String nombre, Categoria cat ,  LocalDate fecha, Boolean baja ) throws NullPointerException, FechaIncorrectaException, CategoriaIncorrectaException{
+	public Empleado(String nombre, Categoria cat ,  LocalDate fecha, Boolean baja ) throws NullPointerException, FechaIncorrectaException{
 
 		// Nombre
-		if (nombre == null) {
-			throw new NullPointerException() ;
-		}else {
-			this.nombre = nombre;
-		}
-
+		this.nombre = nombre;
 		
 		// Fecha
-		if (fecha == null) {
-			throw new NullPointerException() ;
-		}else if( fecha.compareTo( LocalDate.now() ) > 0  ){
+		if ( fecha.compareTo( LocalDate.now() ) > 0  ){
 			throw new FechaIncorrectaException() ;
 		}
 		else {
@@ -40,12 +33,7 @@ public class Empleado implements Comparable<Empleado>{
 		}
 
 		// Categoria
-		if (cat == null) {
-			throw new NullPointerException() ;
-		} else {
-			this.categoria = cat;
-		}
-
+		this.categoria = cat;
 		
 		// Baja
 		this.baja = baja;
@@ -53,7 +41,7 @@ public class Empleado implements Comparable<Empleado>{
 
 
 
-	public double sueldoBruto() throws DatoIncorrectoException, CategoriaIncorrectaException {
+	public double sueldoBruto() throws DatoIncorrectoException {
 
 		// Sueldo base
 		double sueldoBase = 0.0;
@@ -68,8 +56,6 @@ public class Empleado implements Comparable<Empleado>{
 		case OBRERO:
 			sueldoBase = 100.0 ;
 			break;
-		default:
-			throw new CategoriaIncorrectaException();
 		}
 
 		// Complemento antiguedad
