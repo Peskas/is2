@@ -22,10 +22,16 @@ public class Empleado implements Comparable<Empleado>{
 	public Empleado(String nombre, Categoria cat ,  LocalDate fecha, Boolean baja ) throws NullPointerException, FechaIncorrectaException{
 
 		// Nombre
+		if(nombre == null) {
+			throw new NullPointerException() ;
+		}else {
 		this.nombre = nombre;
+		}
 		
 		// Fecha
-		if ( fecha.compareTo( LocalDate.now() ) > 0  ){
+		if(fecha == null) {
+			throw new NullPointerException() ;
+		}else if ( fecha.compareTo( LocalDate.now() ) > 0  ){
 			throw new FechaIncorrectaException() ;
 		}
 		else {
@@ -33,13 +39,21 @@ public class Empleado implements Comparable<Empleado>{
 		}
 
 		// Categoria
+		if(cat == null) {
+			throw new NullPointerException() ;
+		}else {
 		this.categoria = cat;
+		}
 		
 		// Baja
+		if(baja == null) {
+			throw new NullPointerException() ;
+		}else {
 		this.baja = baja;
+		}
 	}
 
-
+ 
 
 	public double sueldoBruto() throws DatoIncorrectoException {
 

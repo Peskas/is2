@@ -7,7 +7,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import es.unican.is2.practica4.model.Categoria;
-import es.unican.is2.practica4.model.CategoriaIncorrectaException;
 import es.unican.is2.practica4.model.DatoIncorrectoException;
 import es.unican.is2.practica4.model.Empleado;
 import es.unican.is2.practica4.model.FechaIncorrectaException;
@@ -106,7 +105,6 @@ public class EmpleadosGUI extends JFrame {
 					txtSueldo.setText(Double.toString(sueldo));
 				} catch (NullPointerException e1) {
 				} catch (DatoIncorrectoException e1) {
-				} catch (CategoriaIncorrectaException e1) {
 				} catch (FechaIncorrectaException e1) {
 				}
 

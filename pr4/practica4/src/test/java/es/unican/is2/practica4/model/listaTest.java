@@ -50,7 +50,6 @@ public class listaTest {
 
 
 		} catch (NullPointerException e) {
-		} catch (CategoriaIncorrectaException e) {
 		} catch (FechaIncorrectaException e) {} 
 
 		/////////////////////////
@@ -181,10 +180,8 @@ public class listaTest {
 
 		try {
 			emp = new Empleado("Pepe",Categoria.OBRERO) ;
-		} catch (NullPointerException e) {
-		} catch (CategoriaIncorrectaException e) {
-		} catch (FechaIncorrectaException e) {
-		}
+		} catch (NullPointerException e) {}
+		catch (FechaIncorrectaException e) {}
  
 		// Crear lista con el constructor sin parametro
 		ListaOrdenadaAcotada<Empleado> list = new ListaOrdenadaAcotada<Empleado>();
