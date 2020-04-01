@@ -161,22 +161,20 @@ public class Empleado implements Comparable<Empleado>{
 		}else if(arg0.categoria.equals(Categoria.OBRERO ))  {
 			indiceCargoArg = 3 ; 
 		}
-		
+		 
 		
 		
 		// Orden Cargo 		
 		if (indiceCargoThis == indiceCargoArg) {
 			// Orden Alfabetico
-			
 			return  - this.getNombre().compareTo(arg0.getNombre());	
 		}else if ( indiceCargoThis < indiceCargoArg) {
-			
 			return 1;  
 		} else if (indiceCargoThis > indiceCargoArg) {
-		
-			return -1; // this hacia atras
-		}else {
-		 return 0;
+			return -1; 
 		}
+			
+		 return 0;
+		
 	}
 }

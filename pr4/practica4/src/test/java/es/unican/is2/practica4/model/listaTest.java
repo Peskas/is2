@@ -76,8 +76,7 @@ public class listaTest {
 		}
 
 		
-		// nombres y cargos cambiados de la version inicial para que cumpla con la funcion "compare to"
-		 
+		// nombres y cargos cambiados de la version inicial para que cumpla con el orden funcion "compare to"
 		try { 
 			// Error nombre del primero  -->  add esta sustituyendo la primera posicion (indice 0)
 			Assert.assertTrue( "Nombre "+emp0get.getNombre()+" incorrecto",  emp0get.getNombre() == "Paca");  
@@ -203,7 +202,6 @@ public class listaTest {
 			} catch (NullPointerException e) {}
 		}
 
-
 		// Anadir empleado a lista llena
 		try {
 			list2.add(emp);
@@ -214,7 +212,7 @@ public class listaTest {
 		
 		
 		
-		// test Orden Correcto
+		/// Test Orden Correcto
 		
 		
 		ListaOrdenadaAcotada<Empleado> listOrder = new ListaOrdenadaAcotada<Empleado>();
@@ -238,7 +236,8 @@ public class listaTest {
 			
 		} catch (NullPointerException e) {}
 		catch (FechaIncorrectaException e) {}
-		
+	
+	 
 		// introducir a desorden
 		listOrder.add(emp2);
 		listOrder.add(emp4);
@@ -247,13 +246,27 @@ public class listaTest {
 		listOrder.add(emp3);
 		listOrder.add(emp6);
 		
-		// comprobar orden 
+		// comprobar orden  
 		Assert.assertTrue(" Orden incorrecto ",listOrder.get(0).equals(emp1));
 		Assert.assertTrue(" Orden incorrecto ",listOrder.get(1).equals(emp2));
 		Assert.assertTrue(" Orden incorrecto ",listOrder.get(2).equals(emp3));
 		Assert.assertTrue(" Orden incorrecto ",listOrder.get(3).equals(emp4));
 		Assert.assertTrue(" Orden incorrecto ",listOrder.get(4).equals(emp5));
 		Assert.assertTrue(" Orden incorrecto ",listOrder.get(5).equals(emp6));
+		
+		
+		// Eliminar y comprobar orden 
+		
+		listOrder.remove(0);
+		listOrder.remove(1);
+		listOrder.remove(2);
+		
+		Assert.assertTrue(" Orden incorrecto ",listOrder.get(0).equals(emp2));
+		Assert.assertTrue(" Orden incorrecto ",listOrder.get(1).equals(emp4));
+		Assert.assertTrue(" Orden incorrecto ",listOrder.get(2).equals(emp6));
+		
+
+		
 
 	}
 }
