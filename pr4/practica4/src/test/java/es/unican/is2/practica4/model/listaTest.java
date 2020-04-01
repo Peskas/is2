@@ -266,7 +266,5 @@ public class listaTest {
 		Assert.assertTrue(" Orden incorrecto ",listOrder.get(2).equals(emp6));
 		
 
-		
-
 	}
 }
