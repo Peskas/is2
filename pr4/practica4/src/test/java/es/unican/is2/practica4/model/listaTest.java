@@ -60,13 +60,12 @@ public class listaTest {
 		list.add(emp1);
 		list.add(emp2);
 
-		Assert.assertTrue( "Tamano incorrecto",  list.size()  == 3 );  // List size correcto ¿?
-
+		Assert.assertTrue( "Tamano incorrecto",  list.size()  == 3 ); 
+		
+		
 		Empleado emp0get = null ;
 		Empleado emp1get = null ;
 		Empleado emp2get = null ;
-
-
 		try {
 			emp0get = list.get(0);
 			emp1get = list.get(1);
@@ -76,19 +75,22 @@ public class listaTest {
 			Assert.fail("No se puede obtener"); // Error al obtener el segundo elemento en adelante
 		}
 
-		try {
-			Assert.assertTrue( "Nombre "+emp0get.getNombre()+" incorrecto",  emp0get.getNombre() == "Pedro");  
-			// Error nombre del primero  -->  GET esta sustituyendo la primera posicion (indice 0)
+		
+		// nombres y cargos cambiados de la version inicial para que cumpla con la funcion "compare to"
+		 
+		try { 
+			// Error nombre del primero  -->  add esta sustituyendo la primera posicion (indice 0)
+			Assert.assertTrue( "Nombre "+emp0get.getNombre()+" incorrecto",  emp0get.getNombre() == "Paca");  
 			Assert.assertTrue( "Nombre incorrecto",  emp1get.getNombre() == "Juan" );
-			Assert.assertTrue( "Nombre incorrecto",  emp2get.getNombre() == "Paca" );
+			Assert.assertTrue( "Nombre incorrecto",  emp2get.getNombre() == "Pedro" );
 		}catch (NullPointerException e) {
 			Assert.fail("No se puede obtener"); // Error al obtener nombre del segundo elemento en adelante.
 		}
 
 		try {
-			Assert.assertTrue( "Categoria Incorrecta",  emp0get.getCategoria() == Categoria.OBRERO ); 
+			Assert.assertTrue( "Categoria Incorrecta",  emp0get.getCategoria() == Categoria.DIRECTIVO ); 
 			Assert.assertTrue( "Categoria Incorrecta",  emp1get.getCategoria() == Categoria.GESTOR ); 
-			Assert.assertTrue( "Categoria Incorrecta",  emp2get.getCategoria() == Categoria.DIRECTIVO ); 
+			Assert.assertTrue( "Categoria Incorrecta",  emp2get.getCategoria() == Categoria.OBRERO ); 
 
 		}catch (NullPointerException e) {
 			Assert.fail("No se puede obtener"); // Error al obtener categoria del segundo elemento en adelante.
@@ -109,7 +111,7 @@ public class listaTest {
 
 		try {
 			Assert.assertTrue( "Nombre incorrecto",  list.get(0).getNombre() == "Juan" );
-			Assert.assertTrue( "Nombre incorrecto",  list.get(1).getNombre() == "Paca" );
+			Assert.assertTrue( "Nombre incorrecto",  list.get(1).getNombre() == "Pedro" );
 		}catch (NullPointerException e) {
 			Assert.fail("No se puede obtener");  //  No queda ningun elemento en la lista
 		}
@@ -176,6 +178,7 @@ public class listaTest {
 	@Test
 	public void testCajaBlanca() {
 
+		
 		Empleado emp = null;
 
 		try {
@@ -208,7 +211,49 @@ public class listaTest {
 		} catch (IllegalStateException e) {
 			// Success
 		}
+		
+		
+		
+		// test Orden Correcto
+		
+		
+		ListaOrdenadaAcotada<Empleado> listOrder = new ListaOrdenadaAcotada<Empleado>();
 
+		Empleado emp1 = null;
+		Empleado emp2 = null;
+		Empleado emp3 = null;
+		Empleado emp4 = null;
+		Empleado emp5 = null;
+		Empleado emp6 = null;
+
+		try {
+			emp1 = new Empleado("A..D",Categoria.DIRECTIVO) ;
+			emp2 = new Empleado("B..D",Categoria.DIRECTIVO) ;
+			
+			emp3 = new Empleado("A..G",Categoria.GESTOR) ;
+			emp4 = new Empleado("B..G",Categoria.GESTOR) ;
+			
+			emp5 = new Empleado("A..O",Categoria.OBRERO) ;
+			emp6 = new Empleado("B..O",Categoria.OBRERO) ;
+			
+		} catch (NullPointerException e) {}
+		catch (FechaIncorrectaException e) {}
+		
+		// introducir a desorden
+		listOrder.add(emp2);
+		listOrder.add(emp4);
+		listOrder.add(emp1);
+		listOrder.add(emp5);
+		listOrder.add(emp3);
+		listOrder.add(emp6);
+		
+		// comprobar orden 
+		Assert.assertTrue(" Orden incorrecto ",listOrder.get(0).equals(emp1));
+		Assert.assertTrue(" Orden incorrecto ",listOrder.get(1).equals(emp2));
+		Assert.assertTrue(" Orden incorrecto ",listOrder.get(2).equals(emp3));
+		Assert.assertTrue(" Orden incorrecto ",listOrder.get(3).equals(emp4));
+		Assert.assertTrue(" Orden incorrecto ",listOrder.get(4).equals(emp5));
+		Assert.assertTrue(" Orden incorrecto ",listOrder.get(5).equals(emp6));
 
 	}
 }

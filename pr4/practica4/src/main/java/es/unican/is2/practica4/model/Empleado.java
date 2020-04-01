@@ -133,6 +133,50 @@ public class Empleado implements Comparable<Empleado>{
 	public int compareTo(Empleado arg0) {
 		
 		
-		return 0;
+		// Por cargo y despues por alfabetico
+		
+		// Si this ha de desplazarse hacia atras respesto a arg0
+		//  return -1 else 1 .
+		
+		
+		
+		int indiceCargoThis = 0 ;	
+		if(this.categoria.equals(Categoria.DIRECTIVO) ) {	
+			indiceCargoThis = 1;
+		}
+		else if(this.categoria.equals(Categoria.GESTOR )) {
+			indiceCargoThis = 2 ; 
+		}
+		else if(this.categoria.equals(Categoria.OBRERO ))  {
+			indiceCargoThis = 3 ; 
+		}
+		
+		
+		int indiceCargoArg = 0 ;
+		
+		if(arg0.categoria.equals(Categoria.DIRECTIVO) ) {
+			indiceCargoArg = 1;
+		}else if(arg0.categoria.equals(Categoria.GESTOR )) {
+			indiceCargoArg = 2 ; 
+		}else if(arg0.categoria.equals(Categoria.OBRERO ))  {
+			indiceCargoArg = 3 ; 
+		}
+		
+		
+		
+		// Orden Cargo 		
+		if (indiceCargoThis == indiceCargoArg) {
+			// Orden Alfabetico
+			
+			return  - this.getNombre().compareTo(arg0.getNombre());	
+		}else if ( indiceCargoThis < indiceCargoArg) {
+			
+			return 1;  
+		} else if (indiceCargoThis > indiceCargoArg) {
+		
+			return -1; // this hacia atras
+		}else {
+		 return 0;
+		}
 	}
 }

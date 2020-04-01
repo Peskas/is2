@@ -25,7 +25,7 @@ public class EmpleadoTest {
 
 	// Inicializa las variables del tiempo respecto a hoy
 
-	@Before
+	@Before 
 	public void setUp() {
 
 		// Hoy
