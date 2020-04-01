@@ -15,10 +15,8 @@ public class listaTest {
 	
 	@Test
 	public void testCajaNegraConstructor() {
-
-
 		
-		// crear lista negativo ,  crear lista 0
+		// Crear lista de tamano negativo
 		try {
 			ListaOrdenadaAcotada<Empleado> list = new ListaOrdenadaAcotada<Empleado>(-10);
 			Assert.fail("La lista permite crearse con numeros negativos como tamano");
@@ -26,8 +24,8 @@ public class listaTest {
 			// Success
 		}
 
-		// Lista tamano 0
-		try {
+		// Crear lista tamano 0
+		try{
 			ListaOrdenadaAcotada<Empleado> list = new ListaOrdenadaAcotada<Empleado>(0);
 			Assert.fail("La lista permite crearse con tamano 0");
 		}catch (NullPointerException e) {
@@ -190,7 +188,6 @@ public class listaTest {
  
 		// Crear lista con el constructor sin parametro
 		ListaOrdenadaAcotada<Empleado> list = new ListaOrdenadaAcotada<Empleado>();
-		System.out.println(list.size());
 		for(int i= 0; i<10 ;i++) {
 			try {
 				list.add(emp);
