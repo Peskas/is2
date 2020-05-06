@@ -90,7 +90,7 @@ public class Tienda {
 		return true;
 	}
 
-	private double sumaComplemento(Vendedor v) {
+	private double sumaComplemento(Vendedor v) { // WMC +1 
 		double complemento = 0.0 ; 
 		switch (((Vendedor) v).tipo()) {// WMC +2 //CCog +1 // CBO +1(tipoVendedor)
 		case JUNIOR:
@@ -148,7 +148,7 @@ public class Tienda {
 				String idIn = in.next();
 				in.next();
 				double totalVentas = in.nextDouble();
-				ven = new VendedorEnPlantilla(nombre, idIn, TipoVendedor.SENIOR);
+				ven = new VendedorEnPlantilla(nombre, idIn, TipoVendedor.SENIOR); //CBO +1 (vendedorEnPlantilla)
 				ven.setT(totalVentas);
 				lista.add(ven);
 			}
@@ -170,7 +170,7 @@ public class Tienda {
 				String idIn = in.next();
 				in.next();
 				double totalVentas = in.nextDouble();
-				ven = new VendedorEnPracticas(nombre, idIn);
+				ven = new VendedorEnPracticas(nombre, idIn); //CBO +1 (vendedorEnPracticas)
 				ven.setT(totalVentas);
 				lista.add(ven);
 			}
