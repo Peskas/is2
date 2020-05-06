@@ -1,4 +1,4 @@
-package es.unican.is2.tienda.gui;
+package es.unican.is2.tienda.gui_old;
 
 import java.io.IOException;
 import java.util.Collections;
