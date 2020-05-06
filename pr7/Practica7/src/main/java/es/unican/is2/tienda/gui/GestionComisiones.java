@@ -51,6 +51,7 @@ public class GestionComisiones {
 
 			// realiza las acciones dependiendo de la opcion elegida
 			switch (opcion) {
+			
 			case NUEVA_VENTA:
 				lect = new Lectura("Datos Venta");
 				lect.creaEntrada("DNI Vendedor", "");
@@ -70,17 +71,9 @@ public class GestionComisiones {
 			case VENDEDOR_DEL_MES:
 
 				vendedores = tienda.vendedores();
-				resultado = new LinkedList<Vendedor>();
-				double maxVentas = 0.0;
-				for (Vendedor v : vendedores) {
-					if (v.getTotalVentas() > maxVentas) {
-						maxVentas = v.getTotalVentas();
-						resultado.clear();
-						resultado.add(v);
-					} else if (v.getTotalVentas() == maxVentas) {
-						resultado.add(v);
-					}
-				}
+				
+				// Extract-method
+				resultado = getEmpleadosMaxVentas(vendedores);
 
 				msj = "";
 				for (Vendedor vn : resultado) {
@@ -110,6 +103,22 @@ public class GestionComisiones {
 				break;
 			}
 		}
+	}
+
+	public static List<Vendedor> getEmpleadosMaxVentas(List<Vendedor> vendedores) {
+		List<Vendedor> resultado;
+		resultado = new LinkedList<Vendedor>();
+		double maxVentas = 0.0;
+		for (Vendedor v : vendedores) {
+			if (v.getTotalVentas() > maxVentas) {
+				maxVentas = v.getTotalVentas();
+				resultado.clear();
+				resultado.add(v);
+			} else if (v.getTotalVentas() == maxVentas) {
+				resultado.add(v);
+			}
+		}
+		return resultado;
 	}
 
 	/**
