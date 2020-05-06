@@ -20,18 +20,20 @@ import fundamentos.Mensaje;
  */
 public class GestionComisiones {
 
+	final static int NUEVA_VENTA = 0, VENDEDOR_DEL_MES = 1, VENDEDORES = 2;
+	
 	/**
 	 * Programa principal basado en menu
 	 */
 	public static void main(String[] args) {
 		// opciones del menu
-		final int NUEVA_VENTA = 0, VENDEDOR_DEL_MES = 1, VENDEDORES = 2;
 
 		// variables auxiliares
 		String dni;
 		Lectura lect;
 
 		List<Vendedor> vendedores;
+		// Rename-field
 		List<Vendedor> empleadosMes;
 		String msj;
 
@@ -49,59 +51,69 @@ public class GestionComisiones {
 		while (true) {
 			opcion = menu.leeOpcion();
 
-			// realiza las acciones dependiendo de la opcion elegida
-			switch (opcion) {
-			
-			case NUEVA_VENTA:
-				lect = new Lectura("Datos Venta");
-				lect.creaEntrada("DNI Vendedor", "");
-				lect.creaEntrada("Importe", "");
-				lect.esperaYCierra();
-				dni = lect.leeString("DNI Vendedor");
-				double importe = lect.leeDouble("Importe");
-				try {
-					if (!tienda.anhadeVenta(dni, importe)) {
-						mensaje("ERROR", "El vendedor no existe");
-					}
-				} catch (IOException e) {
-					mensaje("ERROR", "No se pudo guardar el cambio");
+			// Extract-method
+			escogeOpcion(tienda, opcion);
+		}
+	}
+
+	public static void escogeOpcion(Tienda tienda, int opcion) {
+		String dni;
+		Lectura lect;
+		List<Vendedor> vendedores;
+		List<Vendedor> empleadosMes;
+		String msj;
+		// realiza las acciones dependiendo de la opcion elegida
+		switch (opcion) {
+		
+		case NUEVA_VENTA:
+			lect = new Lectura("Datos Venta");
+			lect.creaEntrada("DNI Vendedor", "");
+			lect.creaEntrada("Importe", "");
+			lect.esperaYCierra();
+			dni = lect.leeString("DNI Vendedor");
+			double importe = lect.leeDouble("Importe");
+			try {
+				if (!tienda.anhadeVenta(dni, importe)) {
+					mensaje("ERROR", "El vendedor no existe");
 				}
-				break;
-
-			case VENDEDOR_DEL_MES:
-
-				vendedores = tienda.vendedores();
-				
-				// Extract-method
-				empleadosMes = getEmpleadosMaxVentas(vendedores);
-
-				msj = "";
-				for (Vendedor vn : empleadosMes) {
-					msj += vn.getNombre() + "\n";
-				}
-				mensaje("VENDEDORES DEL MES", msj);
-				break;
-
-			case VENDEDORES:
-
-				vendedores = tienda.vendedores();
-				System.out.println(vendedores.size());
-				Collections.sort(vendedores, new Comparator<Vendedor>() {
-					public int compare(Vendedor o1, Vendedor o2) {
-						if (o1.getTotalVentas()>o2.getTotalVentas())
-							return -1;
-						else if (o1.getTotalVentas()<o2.getTotalVentas())
-							return 1;
-						return 0;
-					}			
-				});
-				msj = "";
-				for (Vendedor vn : vendedores) {
-					msj += vn.getNombre() + " " + vn.getId() + "\n";
-				}
-				mensaje("VENDEDORES", msj);
-				break;
+			} catch (IOException e) {
+				mensaje("ERROR", "No se pudo guardar el cambio");
 			}
+			break;
+
+		case VENDEDOR_DEL_MES:
+
+			vendedores = tienda.vendedores();
+			
+			// Extract-method
+			empleadosMes = getEmpleadosMaxVentas(vendedores);
+
+			msj = "";
+			for (Vendedor vn : empleadosMes) {
+				msj += vn.getNombre() + "\n";
+			}
+			mensaje("VENDEDORES DEL MES", msj);
+			break;
+
+		case VENDEDORES:
+
+			vendedores = tienda.vendedores();
+			System.out.println(vendedores.size());
+			Collections.sort(vendedores, new Comparator<Vendedor>() {
+				public int compare(Vendedor o1, Vendedor o2) {
+					if (o1.getTotalVentas()>o2.getTotalVentas())
+						return -1;
+					else if (o1.getTotalVentas()<o2.getTotalVentas())
+						return 1;
+					return 0;
+				}			
+			});
+			msj = "";
+			for (Vendedor vn : vendedores) {
+				msj += vn.getNombre() + " " + vn.getId() + "\n";
+			}
+			mensaje("VENDEDORES", msj);
+			break;
 		}
 	}
 
