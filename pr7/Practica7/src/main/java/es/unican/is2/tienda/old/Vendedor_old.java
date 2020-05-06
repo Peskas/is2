@@ -68,7 +68,7 @@ public abstract class Vendedor_old {
 		if (!(obj instanceof Vendedor_old))  // WMC +1 CCOG+1
 			return false;
 		Vendedor_old v = (Vendedor_old) obj;
-		return (v.id.equals(id) && v.nombre.equals(nombre));
+		return (v.id.equals(id) && v.nombre.equals(nombre)); // WCM +1
 	}
 	
 	
