@@ -18,7 +18,7 @@ import java.util.Scanner;
  */
 public class Tienda {
 
-	private LinkedList<Vendedor> lista = new LinkedList<Vendedor>();
+	private LinkedList<Vendedor> lista = new LinkedList<Vendedor>(); // CBO +1
 	private String direccion;
 	private String nombre;
 
@@ -146,7 +146,7 @@ public class Tienda {
 				lista.add(ven);
 			}
 			// lee los vendedores junior
-			while (in.hasNext() && !in.next().equals("Pr�cticas")) {// WMC +2 //CCog +1
+			while (in.hasNext() && !in.next().equals("Pr�cticas")) { // WMC +2 //CCog +1
 				String nombre = in.next();
 				in.next();
 				String idIn = in.next();
@@ -156,7 +156,7 @@ public class Tienda {
 				ven.setT(totalVentas);
 				lista.add(ven);
 			}
-			while (in.hasNext()) {// WMC +1 //CCog +1
+			while (in.hasNext()) { // WMC +1 //CCog +1
 				in.next();
 				String nombre = in.next();
 				in.next();
@@ -169,13 +169,13 @@ public class Tienda {
 			}
 		} catch (FileNotFoundException e) {
 		} finally {
-			if (in != null) {// WMC +1 //CCog +1 
+			if (in != null) { // WMC +1 //CCog +1 
 				in.close();
 			}
 		} // try
 
-		for (Vendedor v : lista) {// WMC +1 //CCog +1
-			if (v.getId().equals(id))// WMC +1 { //CCog +2
+		for (Vendedor v : lista) { // WMC +1 //CCog +1
+			if (v.getId().equals(id)) { // WMC +1 { //CCog +2
 				return v;
 			}
 		}
