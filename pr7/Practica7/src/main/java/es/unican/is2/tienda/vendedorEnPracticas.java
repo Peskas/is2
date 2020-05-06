@@ -9,7 +9,7 @@ public class vendedorEnPracticas extends Vendedor{ // DIT +1
 	 * @param dni
 	 */
 	public vendedorEnPracticas(String nombre, String dni) { // WMC +1
-		super(nombre, dni);
+		super(nombre, dni); // CBO +1
 	}
 
 }

@@ -259,7 +259,7 @@ public class Tienda {
 		for (Vendedor v : lista) { // WMC +1 //CCog +1
 			if (v instanceof vendedorEnPracticas) { // WMC +1 //CCog +2 
 				practicas.add(v);
-			} else if (v instanceof VendedorEnPlantilla) {// WMC +1 //CCog +2
+			} else if (v instanceof VendedorEnPlantilla) { // WMC +1 //CCog +2
 				VendedorEnPlantilla vp = (VendedorEnPlantilla) v;
 				if (vp.tipo().equals(TipoVendedor.JUNIOR)) // WMC +1 //CCog +3
 					junior.add(vp);
@@ -276,22 +276,22 @@ public class Tienda {
 			out.println(direccion);
 			out.println();
 			out.println("    Senior");
-			for (Vendedor v1 : senior)// WMC +1 //CCog +1
+			for (Vendedor v1 : senior) // WMC +1 //CCog +1
 				out.println("      Nombre: " + v1.getNombre() + "   Id: " + v1.getId() + "   TotalVentasMes: "
 						+ v1.getTotalVentas());
 			out.println();
 			out.println("    Junior");
-			for (Vendedor v2 : junior)// WMC +1 //CCog +1
+			for (Vendedor v2 : junior) // WMC +1 //CCog +1
 				out.println("      Nombre: " + v2.getNombre() + "   Id: " + v2.getId() + "   TotalVentasMes: "
 						+ v2.getTotalVentas());
 			out.println();
 			out.println("    Pr�cticas");
-			for (Vendedor v3 : practicas)// WMC +1 //CCog +1
+			for (Vendedor v3 : practicas) // WMC +1 //CCog +1
 				out.println("      Nombre: " + v3.getNombre() + "   Id: " + v3.getId() + "   TotalVentasMes: "
 						+ v3.getTotalVentas());
 
 		} finally {
-			if (out != null)// WMC +1 //CCog +1
+			if (out != null) // WMC +1 //CCog +1
 				out.close();
 		}
 	}

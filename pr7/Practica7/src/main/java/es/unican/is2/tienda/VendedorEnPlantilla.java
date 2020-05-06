@@ -12,7 +12,7 @@ public class VendedorEnPlantilla extends Vendedor { // DIT +1
 	 * @param tipo
 	 */
 	public VendedorEnPlantilla(String nombre, String dni, TipoVendedor tipo) { // WMC +1
-		super(nombre, dni);
+		super(nombre, dni); // CBO +1
 		this.tipo = tipo;
 	}
 	
