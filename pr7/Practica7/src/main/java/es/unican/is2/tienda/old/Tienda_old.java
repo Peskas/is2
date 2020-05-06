@@ -23,7 +23,7 @@ import es.unican.is2.tienda.vendedorEnPracticas;
  */
 public class Tienda_old {
 
-	private LinkedList<Vendedor> lista = new LinkedList<Vendedor>(); // CBO +1
+	private LinkedList<Vendedor> lista = new LinkedList<Vendedor>(); // CBO +1 (Vendedor)
 	private String direccion;
 	private String nombre;
 
@@ -146,7 +146,7 @@ public class Tienda_old {
 				String idIn = in.next();
 				in.next();
 				double totalVentas = in.nextDouble();
-				ven = new VendedorEnPlantilla(nombre, idIn, TipoVendedor.SENIOR);// CBO +1
+				ven = new VendedorEnPlantilla(nombre, idIn, TipoVendedor.SENIOR);// CBO +1 (vendedorEnPlantilla)
 				ven.setT(totalVentas);
 				lista.add(ven);
 			}
@@ -168,7 +168,7 @@ public class Tienda_old {
 				String idIn = in.next();
 				in.next();
 				double totalVentas = in.nextDouble();
-				ven = new vendedorEnPracticas(nombre, idIn); // CBO +1
+				ven = new vendedorEnPracticas(nombre, idIn); // CBO +1 (vendedorEnPracticas)
 				ven.setT(totalVentas);
 				lista.add(ven);
 			}

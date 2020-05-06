@@ -18,7 +18,9 @@ import java.util.Scanner;
  */
 public class Tienda {
 
-	private LinkedList<Vendedor> lista = new LinkedList<Vendedor>(); // CBO +1
+	private static final double COMPLEMENTO_SENIOR = 0.01;
+	private static final double COMPLEMENTO_JUNIOR = 0.005;
+	private LinkedList<Vendedor> lista = new LinkedList<Vendedor>(); // CBO +1 (Vendedor)
 	private String direccion;
 	private String nombre;
 
@@ -99,18 +101,23 @@ public class Tienda {
 		}
 		double importeFinal = importe;
 		if (v instanceof VendedorEnPlantilla) {// WMC +1 //CCog +1
-			switch (((VendedorEnPlantilla) v).tipo()) {// WMC +2 //CCog +2 // CBO +1(tipoVendedor)
-			case JUNIOR:
-				importeFinal += importeFinal * 0.005;
-				break;
-			case SENIOR:
-				importeFinal += importeFinal * 0.01;
-				break;
-			}
+			importeFinal = sumaComplemento(v, importeFinal);
 		}
 		v.anhade(importeFinal);
 		vuelcaDatos();
 		return true;
+	}
+
+	private double sumaComplemento(Vendedor v, double importeFinal) {
+		switch (((VendedorEnPlantilla) v).tipo()) {// WMC +2 //CCog +1 // CBO +1(tipoVendedor)
+		case JUNIOR:
+			importeFinal += importeFinal * COMPLEMENTO_JUNIOR;
+			break;
+		case SENIOR:
+			importeFinal += importeFinal * COMPLEMENTO_SENIOR;
+			break;
+		}
+		return importeFinal;
 	}
 
 	/**
@@ -141,7 +148,7 @@ public class Tienda {
 				String idIn = in.next();
 				in.next();
 				double totalVentas = in.nextDouble();
-				ven = new VendedorEnPlantilla(nombre, idIn, TipoVendedor.SENIOR);// CBO +1
+				ven = new VendedorEnPlantilla(nombre, idIn, TipoVendedor.SENIOR);// CBO +1 (VendedorEnPlantilla)
 				ven.setT(totalVentas);
 				lista.add(ven);
 			}
@@ -163,7 +170,7 @@ public class Tienda {
 				String idIn = in.next();
 				in.next();
 				double totalVentas = in.nextDouble();
-				ven = new vendedorEnPracticas(nombre, idIn); // CBO +1
+				ven = new vendedorEnPracticas(nombre, idIn); // CBO +1 (vendedorEnPracticas)
 				ven.setT(totalVentas);
 				lista.add(ven);
 			}
