@@ -32,7 +32,7 @@ public class GestionComisiones {
 		Lectura lect;
 
 		List<Vendedor> vendedores;
-		List<Vendedor> resultado;
+		List<Vendedor> empleadosMes;
 		String msj;
 
 		// crea la tienda
@@ -73,10 +73,10 @@ public class GestionComisiones {
 				vendedores = tienda.vendedores();
 				
 				// Extract-method
-				resultado = getEmpleadosMaxVentas(vendedores);
+				empleadosMes = getEmpleadosMaxVentas(vendedores);
 
 				msj = "";
-				for (Vendedor vn : resultado) {
+				for (Vendedor vn : empleadosMes) {
 					msj += vn.getNombre() + "\n";
 				}
 				mensaje("VENDEDORES DEL MES", msj);
