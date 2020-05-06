@@ -29,7 +29,7 @@ public class Tienda {
 	 * 
 	 * @param datos Path absoluto del fichero de datos
 	 */
-	public Tienda(String datos) { // WMC +1
+	public Tienda(String datos) { // WMC +1 
 		this.datos = datos;
 	}
 
@@ -56,9 +56,9 @@ public class Tienda {
 	 * @return true si el vendedor se ha anhadido 
 	 *         false si ya hab�a un vendedor con el mismo id
 	 */
-	public boolean anhade(Vendedor nuevoVendedor) throws IOException { // +1
+	public boolean anhade(Vendedor nuevoVendedor) throws IOException { //CCog +1
 		Vendedor v = buscaVendedor(nuevoVendedor.getId());
-		if (v != null) { // WMC +1
+		if (v != null) { // WMC +1 //CCog +1
 			return false;
 		}
 		lista.add(nuevoVendedor);
