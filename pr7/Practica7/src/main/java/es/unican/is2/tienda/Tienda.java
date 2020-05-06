@@ -109,7 +109,7 @@ public class Tienda {
 	}
 
 	private double sumaComplemento(Vendedor v, double importeFinal) {
-		switch (((VendedorEnPlantilla) v).tipo()) {// WMC +2 //CCog +1 // CBO +1(tipoVendedor)
+		switch (((Vendedor) v).tipo()) {// WMC +2 //CCog +1 // CBO +1(tipoVendedor)
 		case JUNIOR:
 			importeFinal += importeFinal * COMPLEMENTO_JUNIOR;
 			break;
@@ -187,7 +187,7 @@ public class Tienda {
 				String idIn = in.next();
 				in.next();
 				double totalVentas = in.nextDouble();
-				ven = new vendedorEnPracticas(nombre, idIn);
+				ven = new VendedorEnPracticas(nombre, idIn);
 				ven.setT(totalVentas);
 				lista.add(ven);
 			}
@@ -214,10 +214,10 @@ public class Tienda {
 		List<Vendedor> practicas = new LinkedList<Vendedor>();
 
 		for (Vendedor v : lista) { // WMC +1 //CCog +1
-			if (v instanceof vendedorEnPracticas) { // WMC +1 //CCog +2 
+			if (v instanceof VendedorEnPracticas) { // WMC +1 //CCog +2 
 				practicas.add(v);
 			} else if (v instanceof VendedorEnPlantilla) { // WMC +1 //CCog +2
-				VendedorEnPlantilla vp = (VendedorEnPlantilla) v;
+				Vendedor vp = (Vendedor) v;
 				if (vp.tipo().equals(TipoVendedor.JUNIOR)) // WMC +1 //CCog +3
 					junior.add(vp);
 				else

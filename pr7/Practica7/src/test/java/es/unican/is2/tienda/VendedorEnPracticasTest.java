@@ -7,11 +7,11 @@ import org.junit.Test;
 
 public class VendedorEnPracticasTest {
 	
-	private static vendedorEnPracticas sut;
+	private static VendedorEnPracticas sut;
 
 	@Before
 	public void setUp(){
-		sut = new vendedorEnPracticas("Ana", "1");
+		sut = new VendedorEnPracticas("Ana", "1");
 	}
 	
 	@Test
@@ -49,10 +49,10 @@ public class VendedorEnPracticasTest {
 	
 	@Test
 	public void testEquals() {
-		vendedorEnPracticas igual = new vendedorEnPracticas("Ana", "1");
-		vendedorEnPracticas distintoId = new vendedorEnPracticas("Ana", "2");
-		vendedorEnPracticas distintoNombre = new vendedorEnPracticas("Pepe", "1");
-		vendedorEnPracticas distinto = new vendedorEnPracticas("Pepe", "6");
+		VendedorEnPracticas igual = new VendedorEnPracticas("Ana", "1");
+		VendedorEnPracticas distintoId = new VendedorEnPracticas("Ana", "2");
+		VendedorEnPracticas distintoNombre = new VendedorEnPracticas("Pepe", "1");
+		VendedorEnPracticas distinto = new VendedorEnPracticas("Pepe", "6");
 		
 		assertTrue(sut.equals(igual));
 		assertFalse(sut.equals(distintoId));

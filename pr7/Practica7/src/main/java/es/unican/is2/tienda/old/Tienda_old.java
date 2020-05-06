@@ -13,7 +13,7 @@ import java.util.Scanner;
 import es.unican.is2.tienda.TipoVendedor;
 import es.unican.is2.tienda.Vendedor;
 import es.unican.is2.tienda.VendedorEnPlantilla;
-import es.unican.is2.tienda.vendedorEnPracticas;
+import es.unican.is2.tienda.VendedorEnPracticas;
 
 /**
  * Clase que representa una tienda con un conjunto de vendedores y que permite
@@ -104,7 +104,7 @@ public class Tienda_old {
 		}
 		double importeFinal = importe;
 		if (v instanceof VendedorEnPlantilla) {// WMC +1 //CCog +1
-			switch (((VendedorEnPlantilla) v).tipo()) {// WMC +2 //CCog +2 // CBO +1(tipoVendedor)
+			switch (((Vendedor) v).tipo()) {// WMC +2 //CCog +2 // CBO +1(tipoVendedor)
 			case JUNIOR:
 				importeFinal += importeFinal * 0.005;
 				break;
@@ -168,7 +168,7 @@ public class Tienda_old {
 				String idIn = in.next();
 				in.next();
 				double totalVentas = in.nextDouble();
-				ven = new vendedorEnPracticas(nombre, idIn); // CBO +1 (vendedorEnPracticas)
+				ven = new VendedorEnPracticas(nombre, idIn); // CBO +1 (vendedorEnPracticas)
 				ven.setT(totalVentas);
 				lista.add(ven);
 			}
@@ -235,7 +235,7 @@ public class Tienda_old {
 				String idIn = in.next();
 				in.next();
 				double totalVentas = in.nextDouble();
-				ven = new vendedorEnPracticas(nombre, idIn);
+				ven = new VendedorEnPracticas(nombre, idIn);
 				ven.setT(totalVentas);
 				lista.add(ven);
 			}
@@ -262,10 +262,10 @@ public class Tienda_old {
 		List<Vendedor> practicas = new LinkedList<Vendedor>();
 
 		for (Vendedor v : lista) { // WMC +1 //CCog +1
-			if (v instanceof vendedorEnPracticas) { // WMC +1 //CCog +2 
+			if (v instanceof VendedorEnPracticas) { // WMC +1 //CCog +2 
 				practicas.add(v);
 			} else if (v instanceof VendedorEnPlantilla) { // WMC +1 //CCog +2
-				VendedorEnPlantilla vp = (VendedorEnPlantilla) v;
+				Vendedor vp = (Vendedor) v;
 				if (vp.tipo().equals(TipoVendedor.JUNIOR)) // WMC +1 //CCog +3
 					junior.add(vp);
 				else

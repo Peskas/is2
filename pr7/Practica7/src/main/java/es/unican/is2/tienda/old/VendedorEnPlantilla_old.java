@@ -17,8 +17,4 @@ public class VendedorEnPlantilla_old extends Vendedor { // DIT +1
 		super(nombre, dni); // CBO +1
 		this.tipo = tipo;
 	}
-	
-	public TipoVendedor tipo() { // WMC +1
-		return tipo;
-	}
 }
