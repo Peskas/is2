@@ -12,9 +12,9 @@ import java.util.Scanner;
 
 /**
  * Clase que representa una tienda con un conjunto de vendedores y que permite
- * llevar la gestión de las ventas realizadas y las comisiones asignadas a cada
+ * llevar la gestiï¿½n de las ventas realizadas y las comisiones asignadas a cada
  * vendedor. Los datos de la tienda se almacenan en un fichero de texto
- * que se pasa como parámetro al crear la tienda
+ * que se pasa como parï¿½metro al crear la tienda
  */
 public class Tienda {
 
@@ -29,15 +29,15 @@ public class Tienda {
 	 * 
 	 * @param datos Path absoluto del fichero de datos
 	 */
-	public Tienda(String datos) {
+	public Tienda(String datos) { // WMC +1
 		this.datos = datos;
 	}
 
 	/**
-	 * Retorna la dirección de la tienda
-	 * @return Dirección de la tienda
+	 * Retorna la direcciï¿½n de la tienda
+	 * @return Direcciï¿½n de la tienda
 	 */
-	public String direccion() {
+	public String direccion() { // WMC +1
 		return direccion;
 	}
 
@@ -45,20 +45,20 @@ public class Tienda {
 	 * Retorna el nombre de la tienda
 	 * @return Nombre de la tienda
 	 */
-	public String nombre() {
+	public String nombre() { // WMC +1
 		return nombre;
 	}
 
 	/**
-	 * Añade un nuevo vendedor a la tienda
+	 * Aï¿½ade un nuevo vendedor a la tienda
 	 * 
 	 * @param nuevoVendedor
 	 * @return true si el vendedor se ha anhadido 
-	 *         false si ya había un vendedor con el mismo id
+	 *         false si ya habï¿½a un vendedor con el mismo id
 	 */
-	public boolean anhade(Vendedor nuevoVendedor) throws IOException {
+	public boolean anhade(Vendedor nuevoVendedor) throws IOException { // +1
 		Vendedor v = buscaVendedor(nuevoVendedor.getId());
-		if (v != null) {
+		if (v != null) { // WMC +1
 			return false;
 		}
 		lista.add(nuevoVendedor);
@@ -67,11 +67,11 @@ public class Tienda {
 	}
 
 	/**
-	 * Elimina el vendedor cuyo dni se pasa como parámetro
+	 * Elimina el vendedor cuyo dni se pasa como parï¿½metro
 	 * 
 	 * @param id
 	 * @return true si se elimina el vendedor 
-	 *         false si no existe ningún vendedor con el id indicado
+	 *         false si no existe ningï¿½n vendedor con el id indicado
 	 */
 	public boolean eliminaVendedor(String id) throws IOException {
 		Vendedor v = buscaVendedor(id);
@@ -84,13 +84,13 @@ public class Tienda {
 	}
 
 	/**
-	 * Añade una venta a un vendedor
+	 * Aï¿½ade una venta a un vendedor
 	 * 
 	 * @param id
 	 *            Id del vendedor
 	 * @param importe
 	 *            Importe de la venta
-	 * @return true si se añade la venta false si no se encuentra el vendedor
+	 * @return true si se aï¿½ade la venta false si no se encuentra el vendedor
 	 */
 	public boolean anhadeVenta(String id, double importe) throws IOException {
 		Vendedor v = buscaVendedor(id);
@@ -127,7 +127,7 @@ public class Tienda {
 		try {
 			// abre el fichero
 			in = new Scanner(new FileReader(datos));
-			// configura el formato de números
+			// configura el formato de nï¿½meros
 			in.useLocale(Locale.ENGLISH);
 			nombre = in.nextLine();
 			direccion = in.nextLine();
@@ -146,7 +146,7 @@ public class Tienda {
 				lista.add(ven);
 			}
 			// lee los vendedores junior
-			while (in.hasNext() && !in.next().equals("Prácticas")) {
+			while (in.hasNext() && !in.next().equals("Prï¿½cticas")) {
 				String nombre = in.next();
 				in.next();
 				String idIn = in.next();
@@ -194,7 +194,7 @@ public class Tienda {
 		try {
 			// abre el fichero
 			in = new Scanner(new FileReader(datos));
-			// configura el formato de números
+			// configura el formato de nï¿½meros
 			in.useLocale(Locale.ENGLISH);
 			nombre = in.nextLine();
 			direccion = in.nextLine();
@@ -213,7 +213,7 @@ public class Tienda {
 				lista.add(ven);
 			}
 			// lee los vendedores junior
-			while (in.hasNext() && !in.next().equals("Prácticas")) {
+			while (in.hasNext() && !in.next().equals("Prï¿½cticas")) {
 				String nombre = in.next();
 				in.next();
 				String idIn = in.next();
@@ -247,7 +247,7 @@ public class Tienda {
 	}
 
 	/**
-	 * Método que genera el fichero datosTienda.txt con los datos actualizados de
+	 * Mï¿½todo que genera el fichero datosTienda.txt con los datos actualizados de
 	 * los vendedores
 	 */
 	private void vuelcaDatos() throws IOException {
@@ -285,7 +285,7 @@ public class Tienda {
 				out.println("      Nombre: " + v2.getNombre() + "   Id: " + v2.getId() + "   TotalVentasMes: "
 						+ v2.getTotalVentas());
 			out.println();
-			out.println("    Prácticas");
+			out.println("    Prï¿½cticas");
 			for (Vendedor v3 : practicas)
 				out.println("      Nombre: " + v3.getNombre() + "   Id: " + v3.getId() + "   TotalVentasMes: "
 						+ v3.getTotalVentas());

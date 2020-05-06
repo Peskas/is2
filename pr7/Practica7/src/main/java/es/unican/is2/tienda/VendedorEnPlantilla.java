@@ -11,12 +11,12 @@ public class VendedorEnPlantilla extends Vendedor {
 	 * @param dni
 	 * @param tipo
 	 */
-	public VendedorEnPlantilla(String nombre, String dni, TipoVendedor tipo) {
+	public VendedorEnPlantilla(String nombre, String dni, TipoVendedor tipo) { // WMC +1
 		super(nombre, dni);
 		this.tipo = tipo;
 	}
 	
-	public TipoVendedor tipo() {
+	public TipoVendedor tipo() { // WMC +1
 		return tipo;
 	}
 }
