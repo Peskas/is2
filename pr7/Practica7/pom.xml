@@ -15,7 +15,33 @@
 
 		<!-- Lanzamiento en sonar local -->
 		<sonar.host.url>http://localhost:9000</sonar.host.url>
+		
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.0.2</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>
+								es.unican.is2.tienda.gui.GestionComisiones
+							</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-sonar-plugin</artifactId>
+				<version>2.6</version>
+			</plugin>
+		</plugins>
+	</build>
 
 	<dependencies>
 		<dependency>
@@ -30,18 +56,5 @@
 			<version>4.12</version>
 		</dependency>
 	</dependencies>
-
-
-
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-sonar-plugin</artifactId>
-				<version>2.6</version>
-			</plugin>
-		</plugins>
-	</build>
 
 </project>

@@ -8,9 +8,7 @@ import java.util.List;
 
 import es.unican.is2.tienda.Tienda;
 import es.unican.is2.tienda.Vendedor;
-import fundamentos.Menu;
-import fundamentos.Lectura;
-import fundamentos.Mensaje;
+import fundamentos.*;
 
 /**
  * Gesti�n de las comisiones de vendedores de una tienda
