@@ -99,7 +99,7 @@ public class Tienda {
 		}
 		double importeFinal = importe;
 		if (v instanceof VendedorEnPlantilla) {// WMC +1 //CCog +1
-			switch (((VendedorEnPlantilla) v).tipo()) {// WMC +2 //CCog +2
+			switch (((VendedorEnPlantilla) v).tipo()) {// WMC +2 //CCog +2 // CBO +1(tipoVendedor)
 			case JUNIOR:
 				importeFinal += importeFinal * 0.005;
 				break;
@@ -141,7 +141,7 @@ public class Tienda {
 				String idIn = in.next();
 				in.next();
 				double totalVentas = in.nextDouble();
-				ven = new VendedorEnPlantilla(nombre, idIn, TipoVendedor.SENIOR);
+				ven = new VendedorEnPlantilla(nombre, idIn, TipoVendedor.SENIOR);// CBO +1
 				ven.setT(totalVentas);
 				lista.add(ven);
 			}
@@ -152,7 +152,7 @@ public class Tienda {
 				String idIn = in.next();
 				in.next();
 				double totalVentas = in.nextDouble();
-				ven = new VendedorEnPlantilla(nombre, idIn, TipoVendedor.JUNIOR);
+				ven = new VendedorEnPlantilla(nombre, idIn, TipoVendedor.JUNIOR); 
 				ven.setT(totalVentas);
 				lista.add(ven);
 			}
@@ -163,7 +163,7 @@ public class Tienda {
 				String idIn = in.next();
 				in.next();
 				double totalVentas = in.nextDouble();
-				ven = new vendedorEnPracticas(nombre, idIn);
+				ven = new vendedorEnPracticas(nombre, idIn); // CBO +1
 				ven.setT(totalVentas);
 				lista.add(ven);
 			}
