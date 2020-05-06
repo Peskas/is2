@@ -40,7 +40,7 @@ public class Tienda {
 	 * @return true si el vendedor se ha anhadido 
 	 *         false si ya hab�a un vendedor con el mismo id
 	 */
-	public boolean anhade(Vendedor nuevoVendedor) throws IOException { //WMC +1
+	public boolean anhadeVendedor(Vendedor nuevoVendedor) throws IOException { //WMC +1
 		Vendedor v = buscaVendedor(nuevoVendedor.getId());
 		if (v != null) { // WMC +1 //CCog +1
 			return false;
@@ -112,7 +112,7 @@ public class Tienda {
 	 */
 	public Vendedor buscaVendedor(String id) { // WMC +1
 
-		lista = (LinkedList<Vendedor>) vendedores();
+		lista = (LinkedList<Vendedor>) listaVendedores();
 
 		for (Vendedor v : lista) { // WMC +1 //CCog +1
 			if (v.getId().equals(id)) { // WMC +1 { //CCog +2
@@ -127,7 +127,7 @@ public class Tienda {
 	 * 
 	 * @return La lista de vendedores
 	 */
-	public List<Vendedor> vendedores() { // WMC +1
+	public List<Vendedor> listaVendedores() { // WMC +1
 		lista = new LinkedList<Vendedor>();
 
 		Scanner in = null;

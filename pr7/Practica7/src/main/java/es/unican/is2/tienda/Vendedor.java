@@ -13,7 +13,7 @@ public abstract class Vendedor {
 	
 	// Valor total de las ventas mensuales realizadas por el vendedor
 	private double t;
-	protected TipoVendedor tipo;
+	
 	
 	public Vendedor(String nombre, String id) { // WMC +1
 		this.nombre = nombre;
@@ -69,13 +69,10 @@ public abstract class Vendedor {
 		if (!(obj instanceof Vendedor))  // WMC +1 CCOG+1
 			return false;
 		Vendedor v = (Vendedor) obj;
-		return (v.id.equals(id) && v.nombre.equals(nombre));
+		return (v.id.equals(id) ); // WMC +1 CCOG+1
 	}
 
 
-	public TipoVendedor tipo() { // WMC +1
-		return tipo;
-	}
 	
 	
 }

@@ -69,7 +69,7 @@ public class GestionComisiones_old {
 
 			case VENDEDOR_DEL_MES:
 
-				vendedores = tienda.vendedores();
+				vendedores = tienda.listaVendedores();
 				resultado = new LinkedList<Vendedor>();
 				double maxVentas = 0.0;
 				for (Vendedor v : vendedores) { // WMC +1 // CCog +3
@@ -91,7 +91,7 @@ public class GestionComisiones_old {
 
 			case VENDEDORES:
 
-				vendedores = tienda.vendedores();
+				vendedores = tienda.listaVendedores();
 				System.out.println(vendedores.size());
 				Collections.sort(vendedores, new Comparator<Vendedor>() {
 					public int compare(Vendedor o1, Vendedor o2) {
@@ -120,7 +120,7 @@ public class GestionComisiones_old {
 	 * @param txt
 	 *            texto contenido en la ventana
 	 */
-	private static void mensaje(String titulo, String txt) {
+	private static void mensaje(String titulo, String txt) { // WMC +1
 		Mensaje msj = new Mensaje(titulo);
 		msj.escribe(txt);
 
