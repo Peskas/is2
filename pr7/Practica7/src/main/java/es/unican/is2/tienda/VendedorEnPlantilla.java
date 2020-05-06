@@ -1,7 +1,7 @@
 package es.unican.is2.tienda;
 
 
-public class VendedorEnPlantilla extends Vendedor {
+public class VendedorEnPlantilla extends Vendedor { // DIT +1
 	
 	private TipoVendedor tipo;
 	

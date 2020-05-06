@@ -1,7 +1,7 @@
 package es.unican.is2.tienda;
 
 
-public class vendedorEnPracticas extends Vendedor{
+public class vendedorEnPracticas extends Vendedor{ // DIT +1
 	
 	/**
 	 * Retorna un nuevo vendedor en pr�cticas

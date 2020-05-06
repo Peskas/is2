@@ -18,7 +18,7 @@ import java.util.Scanner;
  */
 public class Tienda {
 
-	private LinkedList<Vendedor> lista = new LinkedList<Vendedor>();
+	private LinkedList<Vendedor> lista = new LinkedList<Vendedor>(); // CBO +1
 	private String direccion;
 	private String nombre;
 
