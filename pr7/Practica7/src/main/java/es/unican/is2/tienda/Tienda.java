@@ -22,10 +22,7 @@ public class Tienda {
 	private static final double COMPLEMENTO_SENIOR = 0.01;
 	private static final double COMPLEMENTO_JUNIOR = 0.005;
 	private LinkedList<Vendedor> lista = new LinkedList<Vendedor>(); // CBO +1 (Vendedor)
-	private String direccion;
-	private String nombre;
-
-	private String datos;
+	TiendaData data = new TiendaData();
 
 	/**
 	 * Crea la tienda cargando los datos desde el fichero indicado
@@ -33,23 +30,7 @@ public class Tienda {
 	 * @param datos Path absoluto del fichero de datos
 	 */
 	public Tienda(String datos) { // WMC +1 
-		this.datos = datos;
-	}
-
-	/**
-	 * Retorna la direcci�n de la tienda
-	 * @return Direcci�n de la tienda
-	 */
-	public String direccion() { // WMC +1
-		return direccion;
-	}
-
-	/**
-	 * Retorna el nombre de la tienda
-	 * @return Nombre de la tienda
-	 */
-	public String nombre() { // WMC +1
-		return nombre;
+		this.data.datos = datos;
 	}
 
 	/**
@@ -151,11 +132,11 @@ public class Tienda {
 		Scanner in = null;
 		try {
 			// abre el fichero
-			in = new Scanner(new FileReader(datos));
+			in = new Scanner(new FileReader(data.datos));
 			// configura el formato de n�meros
 			in.useLocale(Idioma);
-			nombre = in.nextLine();
-			direccion = in.nextLine();
+			data.nombre = in.nextLine();
+			data.direccion = in.nextLine();
 			in.next();
 			Vendedor ven = null;
 			// lee los vendedores senior
@@ -229,10 +210,10 @@ public class Tienda {
 
 	try {
 
-		out = new PrintWriter(new FileWriter(datos));
+		out = new PrintWriter(new FileWriter(data.datos));
 
-		out.println(nombre);
-		out.println(direccion);
+		out.println(data.nombre);
+		out.println(data.direccion);
 		out.println();
 		out.println("    Senior");
 		for (Vendedor v1 : senior) // WMC +1 //CCog +1
