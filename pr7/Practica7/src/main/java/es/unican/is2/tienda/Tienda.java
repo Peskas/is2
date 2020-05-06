@@ -256,8 +256,8 @@ public class Tienda {
 		List<Vendedor> junior = new LinkedList<Vendedor>();
 		List<Vendedor> practicas = new LinkedList<Vendedor>();
 
-		for (Vendedor v : lista) {
-			if (v instanceof vendedorEnPracticas) {
+		for (Vendedor v : lista) { // WMC +n
+			if (v instanceof vendedorEnPracticas) { // WMC +1
 				practicas.add(v);
 			} else if (v instanceof VendedorEnPlantilla) {
 				VendedorEnPlantilla vp = (VendedorEnPlantilla) v;
