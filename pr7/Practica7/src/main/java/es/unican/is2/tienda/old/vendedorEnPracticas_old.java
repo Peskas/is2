@@ -1,4 +1,4 @@
-package es.unican.is2.tienda;
+package es.unican.is2.tienda.old;
 
 
 public class vendedorEnPracticas_old extends Vendedor_old{ // DIT +1

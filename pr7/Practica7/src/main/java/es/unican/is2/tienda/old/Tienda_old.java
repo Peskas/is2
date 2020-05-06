@@ -1,4 +1,4 @@
-package es.unican.is2.tienda;
+package es.unican.is2.tienda.old;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -9,6 +9,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
+
+import es.unican.is2.tienda.TipoVendedor;
+import es.unican.is2.tienda.Vendedor;
+import es.unican.is2.tienda.VendedorEnPlantilla;
+import es.unican.is2.tienda.vendedorEnPracticas;
 
 /**
  * Clase que representa una tienda con un conjunto de vendedores y que permite

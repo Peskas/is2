@@ -1,4 +1,4 @@
-package es.unican.is2.tienda;
+package es.unican.is2.tienda.old;
 
 
 /**

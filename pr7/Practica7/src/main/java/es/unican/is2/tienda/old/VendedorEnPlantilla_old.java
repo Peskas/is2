@@ -1,5 +1,7 @@
-package es.unican.is2.tienda;
+package es.unican.is2.tienda.old;
 
+import es.unican.is2.tienda.TipoVendedor;
+import es.unican.is2.tienda.Vendedor;
 
 public class VendedorEnPlantilla_old extends Vendedor { // DIT +1
 	
