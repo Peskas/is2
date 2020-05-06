@@ -83,23 +83,24 @@ public class Tienda {
 		}
 		double importeFinal = importe;
 		if (v instanceof VendedorEnPlantilla) {// WMC +1 //CCog +1
-			importeFinal = sumaComplemento(v, importeFinal);
+			importeFinal += importeFinal *  sumaComplemento(v);
 		}
 		v.anhade(importeFinal);
 		vuelcaDatos();
 		return true;
 	}
 
-	private double sumaComplemento(Vendedor v, double importeFinal) {
+	private double sumaComplemento(Vendedor v) {
+		double complemento = 0.0 ; 
 		switch (((Vendedor) v).tipo()) {// WMC +2 //CCog +1 // CBO +1(tipoVendedor)
 		case JUNIOR:
-			importeFinal += importeFinal * COMPLEMENTO_JUNIOR;
+			complemento = COMPLEMENTO_JUNIOR;
 			break;
 		case SENIOR:
-			importeFinal += importeFinal * COMPLEMENTO_SENIOR;
+			complemento = COMPLEMENTO_SENIOR;
 			break;
 		}
-		return importeFinal;
+		return complemento;
 	}
 
 	/**
