@@ -26,16 +26,6 @@ public class GestionComisiones {
 	 * Programa principal basado en menu
 	 */
 	public static void main(String[] args) {
-		// opciones del menu
-
-		// variables auxiliares
-		String dni;
-		Lectura lect;
-
-		List<Vendedor> vendedores;
-		// Rename-field
-		List<Vendedor> empleadosMes;
-		String msj;
 
 		// crea la tienda
 		Tienda tienda = new Tienda("datosTienda.txt");
