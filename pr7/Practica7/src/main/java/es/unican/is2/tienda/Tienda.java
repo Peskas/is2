@@ -18,6 +18,7 @@ import java.util.Scanner;
  */
 public class Tienda {
 
+	private static final Locale Idioma = Locale.ENGLISH;
 	private static final double COMPLEMENTO_SENIOR = 0.01;
 	private static final double COMPLEMENTO_JUNIOR = 0.005;
 	private LinkedList<Vendedor> lista = new LinkedList<Vendedor>(); // CBO +1 (Vendedor)
@@ -128,7 +129,7 @@ public class Tienda {
 	 * @return vendedor con ese id o null si no existe ninguno
 	 */
 	public Vendedor buscaVendedor(String id) { // WMC +1
-		
+
 		lista = (LinkedList<Vendedor>) vendedores();
 
 		for (Vendedor v : lista) { // WMC +1 //CCog +1
@@ -152,7 +153,7 @@ public class Tienda {
 			// abre el fichero
 			in = new Scanner(new FileReader(datos));
 			// configura el formato de n�meros
-			in.useLocale(Locale.ENGLISH);
+			in.useLocale(Idioma);
 			nombre = in.nextLine();
 			direccion = in.nextLine();
 			in.next();
@@ -216,41 +217,42 @@ public class Tienda {
 		for (Vendedor v : lista) { // WMC +1 //CCog +1
 			if (v instanceof VendedorEnPracticas) { // WMC +1 //CCog +2 
 				practicas.add(v);
-			} else if (v instanceof VendedorEnPlantilla) { // WMC +1 //CCog +2
-				Vendedor vp = (Vendedor) v;
-				if (vp.tipo().equals(TipoVendedor.JUNIOR)) // WMC +1 //CCog +3
-					junior.add(vp);
-				else
-					senior.add(vp);
+			} else if (v instanceof VendedorEnPlantilla && 
+					v.tipo().equals(TipoVendedor.JUNIOR) ) { // WMC +2 //CCog +2
+
+				junior.add(v);
+			}
+			else {
+				senior.add(v);
 			}
 		}
 
-		try {
+	try {
 
-			out = new PrintWriter(new FileWriter(datos));
+		out = new PrintWriter(new FileWriter(datos));
 
-			out.println(nombre);
-			out.println(direccion);
-			out.println();
-			out.println("    Senior");
-			for (Vendedor v1 : senior) // WMC +1 //CCog +1
-				out.println("      Nombre: " + v1.getNombre() + "   Id: " + v1.getId() + "   TotalVentasMes: "
-						+ v1.getTotalVentas());
-			out.println();
-			out.println("    Junior");
-			for (Vendedor v2 : junior) // WMC +1 //CCog +1
-				out.println("      Nombre: " + v2.getNombre() + "   Id: " + v2.getId() + "   TotalVentasMes: "
-						+ v2.getTotalVentas());
-			out.println();
-			out.println("    Pr�cticas");
-			for (Vendedor v3 : practicas) // WMC +1 //CCog +1
-				out.println("      Nombre: " + v3.getNombre() + "   Id: " + v3.getId() + "   TotalVentasMes: "
-						+ v3.getTotalVentas());
+		out.println(nombre);
+		out.println(direccion);
+		out.println();
+		out.println("    Senior");
+		for (Vendedor v1 : senior) // WMC +1 //CCog +1
+			out.println("      Nombre: " + v1.getNombre() + "   Id: " + v1.getId() + "   TotalVentasMes: "
+					+ v1.getTotalVentas());
+		out.println();
+		out.println("    Junior");
+		for (Vendedor v2 : junior) // WMC +1 //CCog +1
+			out.println("      Nombre: " + v2.getNombre() + "   Id: " + v2.getId() + "   TotalVentasMes: "
+					+ v2.getTotalVentas());
+		out.println();
+		out.println("    Pr�cticas");
+		for (Vendedor v3 : practicas) // WMC +1 //CCog +1
+			out.println("      Nombre: " + v3.getNombre() + "   Id: " + v3.getId() + "   TotalVentasMes: "
+					+ v3.getTotalVentas());
 
-		} finally {
-			if (out != null) // WMC +1 //CCog +1
-				out.close();
-		}
+	} finally {
+		if (out != null) // WMC +1 //CCog +1
+			out.close();
 	}
+}
 
 }
