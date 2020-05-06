@@ -18,12 +18,12 @@ import fundamentos.Mensaje;
  * @author MP
  * @version feb-13
  */
-public class GestionComisiones {
+public class GestionComisiones_old {
 
 	/**
 	 * Programa principal basado en menu
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) { // WMC +1 
 		// opciones del menu
 		final int NUEVA_VENTA = 0, VENDEDOR_DEL_MES = 1, VENDEDORES = 2;
 
@@ -31,7 +31,7 @@ public class GestionComisiones {
 		String dni;
 		Lectura lect;
 
-		List<Vendedor> vendedores;
+		List<Vendedor> vendedores; // CBO +1 (vendedor)
 		List<Vendedor> resultado;
 		String msj;
 
@@ -46,11 +46,11 @@ public class GestionComisiones {
 		int opcion;
 
 		// lazo de espera de comandos del usuario
-		while (true) {
+		while (true) { // WMC +1 // CCog +1
 			opcion = menu.leeOpcion();
 
 			// realiza las acciones dependiendo de la opcion elegida
-			switch (opcion) {
+			switch (opcion) { // WMC +3 // CCog +2
 			case NUEVA_VENTA:
 				lect = new Lectura("Datos Venta");
 				lect.creaEntrada("DNI Vendedor", "");
@@ -59,7 +59,7 @@ public class GestionComisiones {
 				dni = lect.leeString("DNI Vendedor");
 				double importe = lect.leeDouble("Importe");
 				try {
-					if (!tienda.anhadeVenta(dni, importe)) {
+					if (!tienda.anhadeVenta(dni, importe)) { // WMC +1 // CCog +3
 						mensaje("ERROR", "El vendedor no existe");
 					}
 				} catch (IOException e) {
@@ -72,18 +72,18 @@ public class GestionComisiones {
 				vendedores = tienda.vendedores();
 				resultado = new LinkedList<Vendedor>();
 				double maxVentas = 0.0;
-				for (Vendedor v : vendedores) {
-					if (v.getTotalVentas() > maxVentas) {
+				for (Vendedor v : vendedores) { // WMC +1 // CCog +3
+					if (v.getTotalVentas() > maxVentas) { // WMC +1 // CCog +4
 						maxVentas = v.getTotalVentas();
 						resultado.clear();
 						resultado.add(v);
-					} else if (v.getTotalVentas() == maxVentas) {
+					} else if (v.getTotalVentas() == maxVentas) { // WMC +1 // CCog +4
 						resultado.add(v);
 					}
 				}
 
 				msj = "";
-				for (Vendedor vn : resultado) {
+				for (Vendedor vn : resultado) { // WMC +1 // CCog +3
 					msj += vn.getNombre() + "\n";
 				}
 				mensaje("VENDEDORES DEL MES", msj);
@@ -95,15 +95,15 @@ public class GestionComisiones {
 				System.out.println(vendedores.size());
 				Collections.sort(vendedores, new Comparator<Vendedor>() {
 					public int compare(Vendedor o1, Vendedor o2) {
-						if (o1.getTotalVentas()>o2.getTotalVentas())
+						if (o1.getTotalVentas()>o2.getTotalVentas()) // WMC +1 // CCog +3
 							return -1;
-						else if (o1.getTotalVentas()<o2.getTotalVentas())
+						else if (o1.getTotalVentas()<o2.getTotalVentas()) // WMC +1 // CCog +3
 							return 1;
 						return 0;
 					}			
 				});
 				msj = "";
-				for (Vendedor vn : vendedores) {
+				for (Vendedor vn : vendedores) { // WMC +1 // CCog +3
 					msj += vn.getNombre() + " " + vn.getId() + "\n";
 				}
 				mensaje("VENDEDORES", msj);
