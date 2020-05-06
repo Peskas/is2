@@ -40,7 +40,7 @@ public class Tienda {
 	 * @return true si el vendedor se ha anhadido 
 	 *         false si ya hab�a un vendedor con el mismo id
 	 */
-	public boolean anhadeVendedor(Vendedor nuevoVendedor) throws IOException { //WMC +1
+	public boolean anhade(Vendedor nuevoVendedor) throws IOException { //WMC +1
 		Vendedor v = buscaVendedor(nuevoVendedor.getId());
 		if (v != null) { // WMC +1 //CCog +1
 			return false;

@@ -73,6 +73,14 @@ public abstract class Vendedor {
 	}
 
 
+	public TipoVendedor tipo() { // WMC +1
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
 	
 	
 }
